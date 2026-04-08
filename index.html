@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Air and Water in the Environment – Grade 2 Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#06A6D4;--water:#0FCEF5;--green:#06D6A0;--purple:#9B5DE5;--red:#EF233C;--teal:#00C9A7;--orange:#FF6B35;--yellow:#FFD166;--pink:#FF4D8B;--shadow:0 6px 20px rgba(0,0,0,.12);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;min-height:100vh;background:linear-gradient(160deg,#E8F7FF 0%,#EAF9F4 50%,#F0EEFF 100%);background-attachment:fixed;}
+.page{display:none;}.page.active{display:block;animation:fadeIn .35s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* HOME HEADER */
+#home-header{background:linear-gradient(135deg,#06A6D4,#0FCEF5);padding:32px 24px;text-align:center;position:relative;overflow:hidden;box-shadow:0 6px 24px rgba(6,166,212,.35);}
+#home-header::before{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.1);width:220px;height:220px;top:-90px;left:-50px;}
+#home-header::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.1);width:170px;height:170px;bottom:-70px;right:-35px;}
+.hero-icon{font-size:76px;display:block;margin-bottom:8px;animation:bounce 2.8s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-5deg);}50%{transform:translateY(-12px) rotate(5deg);}}
+#home-header h1{font-family:'Fredoka One',cursive;font-size:2.9rem;color:white;text-shadow:3px 3px 0 rgba(0,0,0,.15);}
+#home-header p{color:rgba(255,255,255,.92);font-size:1.1rem;font-weight:700;margin-top:6px;}
+
+/* HOME MAIN */
+.home-main{max-width:940px;margin:0 auto;padding:30px 20px 70px;}
+.intro-box{background:white;border-radius:20px;padding:24px 28px;box-shadow:var(--shadow);text-align:center;margin-bottom:32px;}
+.intro-box h2{font-family:'Fredoka One',cursive;font-size:1.55rem;color:var(--sky);margin-bottom:10px;}
+.intro-box p{font-size:1.05rem;font-weight:600;color:#555;line-height:1.75;cursor:pointer;border-radius:10px;padding:6px;transition:background .2s;}
+.intro-box p:hover{background:#EAF7FF;}
+.intro-box p::before{content:'🔊 ';font-size:.85rem;opacity:.6;}
+.grid-title{font-family:'Fredoka One',cursive;font-size:1.85rem;text-align:center;color:#444;margin-bottom:22px;}
+
+/* EXP CARDS */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+.exp-card{background:white;border-radius:22px;padding:22px 18px 18px;box-shadow:var(--shadow);border:3px solid transparent;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;display:block;}
+.exp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;transition:height .25s;}
+.exp-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,.15);}
+.exp-card:hover::after{height:9px;}
+.exp-card:hover .exp-emoji-big{transform:scale(1.18) rotate(6deg);}
+.ec-sky{border-color:#C4E8F5;}.ec-sky::after,.ec-sky .exp-code{background:var(--sky);}.ec-sky:hover{border-color:var(--sky);}
+.ec-teal{border-color:#C0F5EC;}.ec-teal::after,.ec-teal .exp-code{background:var(--teal);}.ec-teal:hover{border-color:var(--teal);}
+.ec-green{border-color:#C4F0E5;}.ec-green::after,.ec-green .exp-code{background:var(--green);}.ec-green:hover{border-color:var(--green);}
+.ec-purple{border-color:#E3D4F8;}.ec-purple::after,.ec-purple .exp-code{background:var(--purple);}.ec-purple:hover{border-color:var(--purple);}
+.ec-orange{border-color:#FFD6C4;}.ec-orange::after,.ec-orange .exp-code{background:var(--orange);}.ec-orange:hover{border-color:var(--orange);}
+.ec-red{border-color:#FFCCD4;}.ec-red::after,.ec-red .exp-code{background:var(--red);}.ec-red:hover{border-color:var(--red);}
+.ec-pink{border-color:#FFD0E4;}.ec-pink::after,.ec-pink .exp-code{background:var(--pink);}.ec-pink:hover{border-color:var(--pink);}
+.ec-yellow{border-color:#FFF0C0;}.ec-yellow::after,.ec-yellow .exp-code{background:#CC9900;}.ec-yellow:hover{border-color:#CC9900;}
+.exp-emoji-big{font-size:48px;display:block;margin-bottom:8px;transition:transform .2s;}
+.exp-code{display:inline-block;color:white;font-family:'Fredoka One',cursive;font-size:.85rem;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+.exp-title-big{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:5px;}
+.ec-sky .exp-title-big{color:var(--sky);}.ec-teal .exp-title-big{color:var(--teal);}.ec-green .exp-title-big{color:var(--green);}
+.ec-purple .exp-title-big{color:var(--purple);}.ec-orange .exp-title-big{color:var(--orange);}.ec-red .exp-title-big{color:var(--red);}
+.ec-pink .exp-title-big{color:var(--pink);}.ec-yellow .exp-title-big{color:#CC9900;}
+.exp-desc-sm{font-size:.875rem;font-weight:600;color:#777;line-height:1.5;}
+.go-btn{display:inline-block;margin-top:10px;border-radius:30px;padding:6px 16px;font-family:'Fredoka One',cursive;font-size:.88rem;color:white;}
+.ec-sky .go-btn{background:var(--sky);}.ec-teal .go-btn{background:var(--teal);}.ec-green .go-btn{background:var(--green);}
+.ec-purple .go-btn{background:var(--purple);}.ec-orange .go-btn{background:var(--orange);}.ec-red .go-btn{background:var(--red);}
+.ec-pink .go-btn{background:var(--pink);}.ec-yellow .go-btn{background:#CC9900;}
+
+/* EXP PAGE HEADER */
+.exp-header{padding:0;position:relative;overflow:hidden;}
+.exp-header::before{content:'';position:absolute;top:-50px;right:-50px;width:210px;height:210px;background:rgba(255,255,255,.1);border-radius:50%;}
+.hdr-inner{max-width:940px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:14px;position:relative;z-index:1;}
+.hdr-icon-big{font-size:54px;}
+.hdr-text h1{font-family:'Fredoka One',cursive;font-size:2.1rem;color:white;text-shadow:3px 3px 0 rgba(0,0,0,.15);line-height:1.1;}
+.hdr-text p{color:rgba(255,255,255,.9);font-size:.92rem;font-weight:700;margin-top:3px;}
+.hdr-home-btn{margin-left:auto;flex-shrink:0;background:rgba(255,255,255,.25);color:white;border:2px solid rgba(255,255,255,.5);border-radius:12px;padding:8px 16px;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.hdr-home-btn:hover{background:rgba(255,255,255,.4);}
+.hdr-sky{background:linear-gradient(135deg,#06A6D4,#0FCEF5);box-shadow:0 4px 20px rgba(6,166,212,.4);}
+.hdr-teal{background:linear-gradient(135deg,#00C9A7,#06D6A0);box-shadow:0 4px 20px rgba(0,201,167,.4);}
+.hdr-green{background:linear-gradient(135deg,#06D6A0,#00C896);box-shadow:0 4px 20px rgba(6,214,160,.4);}
+.hdr-purple{background:linear-gradient(135deg,#9B5DE5,#C77DFF);box-shadow:0 4px 20px rgba(155,93,229,.4);}
+.hdr-orange{background:linear-gradient(135deg,#FF6B35,#FF9F1C);box-shadow:0 4px 20px rgba(255,107,53,.4);}
+.hdr-red{background:linear-gradient(135deg,#EF233C,#FF6B8A);box-shadow:0 4px 20px rgba(239,35,60,.4);}
+.hdr-pink{background:linear-gradient(135deg,#FF4D8B,#FF85B3);box-shadow:0 4px 20px rgba(255,77,139,.4);}
+.hdr-yellow{background:linear-gradient(135deg,#CC9900,#FFD166);box-shadow:0 4px 20px rgba(204,153,0,.4);}
+
+/* TABS */
+.tab-nav{background:white;border-bottom:3px solid #eee;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.tab-nav-inner{max-width:940px;margin:0 auto;display:flex;overflow-x:auto;}
+.tab-btn{font-family:'Fredoka One',cursive;font-size:1rem;padding:13px 20px;border:none;background:none;cursor:pointer;color:#888;border-bottom:4px solid transparent;transition:all .2s;white-space:nowrap;}
+
+/* CONTENT */
+.exp-main{max-width:940px;margin:0 auto;padding:26px 18px 70px;}
+.tab-section{display:none;animation:fadeIn .35s ease;}.tab-section.active{display:block;}
+.card{background:white;border-radius:20px;padding:26px;margin-bottom:22px;box-shadow:var(--shadow);border:3px solid transparent;}
+.b-sky{border-color:#C4E8F5;}.b-teal{border-color:#C0F5EC;}.b-green{border-color:#C4F0E5;}
+.b-purple{border-color:#E3D4F8;}.b-red{border-color:#FFCCD4;}.b-orange{border-color:#FFD6C4;}.b-yellow{border-color:#FFF0C0;}.b-pink{border-color:#FFD0E4;}
+.card-title{font-family:'Fredoka One',cursive;font-size:1.45rem;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.speakable{cursor:pointer;line-height:1.8;font-size:1.05rem;font-weight:600;padding:9px 12px;border-radius:12px;transition:background .2s;display:block;margin-bottom:6px;}
+.speakable::before{content:'🔊';font-size:.82rem;margin-right:5px;opacity:.6;vertical-align:middle;}
+.speakable:hover{background:#f5f5f5;}
+.speak-all-btn{border:none;border-radius:14px;padding:8px 16px;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;color:white;transition:all .2s;}
+.speak-all-btn:hover{transform:scale(1.04);}
+.concept-box{border-radius:20px;padding:26px;color:white;margin-bottom:22px;text-align:center;position:relative;overflow:hidden;}
+.concept-box h2{font-family:'Fredoka One',cursive;font-size:1.9rem;margin-bottom:8px;text-shadow:2px 2px 0 rgba(0,0,0,.15);}
+.concept-box .speakable{color:white;font-size:1.15rem;}.concept-box .speakable:hover{background:rgba(255,255,255,.2);}
+.concept-box .bg-icon{font-size:80px;position:absolute;right:16px;top:50%;transform:translateY(-50%);opacity:.18;pointer-events:none;}
+.fun-fact{background:linear-gradient(135deg,#9B5DE5,#C77DFF);color:white;border-radius:16px;padding:18px 22px;margin-top:10px;display:flex;align-items:flex-start;gap:12px;}
+.fun-fact .ff-i{font-size:1.9rem;flex-shrink:0;}
+.fun-fact p{font-size:.98rem;font-weight:700;line-height:1.65;cursor:pointer;}
+.fun-fact p::before{content:'🔊 ';}
+.think-box{border-radius:16px;padding:20px 24px;margin-top:18px;border:3px solid #FFF0C0;background:white;}
+.think-box .card-title{color:#CC8800;}
+
+/* IMPACT GRID */
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:14px;}
+.impact-item{border-radius:16px;padding:16px;border:2.5px solid #ddd;background:white;cursor:pointer;transition:all .2s;}
+.impact-item:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.impact-item .ii-em{font-size:2rem;display:block;margin-bottom:5px;}
+.impact-item .ii-badge{font-size:.7rem;font-weight:800;margin-bottom:4px;display:block;}
+.impact-item .ii-title{font-family:'Fredoka One',cursive;font-size:.98rem;margin-bottom:4px;}
+.impact-item .ii-text{font-size:.82rem;color:#555;line-height:1.5;}
+
+/* PERSPECTIVES SECTION */
+.persp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:12px;}
+.persp-card{border-radius:16px;padding:18px;border:3px solid;cursor:pointer;transition:all .2s;}
+.persp-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.persp-card .pc-em{font-size:2.2rem;display:block;margin-bottom:7px;}
+.persp-card .pc-title{font-family:'Fredoka One',cursive;font-size:1.05rem;margin-bottom:6px;}
+.persp-card .pc-text{font-size:.85rem;font-weight:600;color:#444;line-height:1.6;}
+
+/* ACTION STEPS */
+.action-list{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
+.action-step{background:white;border-radius:14px;padding:14px 16px;border:2.5px solid #C4E8F5;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:all .2s;}
+.action-step:hover{transform:translateX(4px);border-color:var(--sky);}
+.action-step .as-num{background:var(--sky);color:white;border-radius:50%;width:32px;height:32px;min-width:32px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:1rem;}
+.action-step .as-text{font-size:.95rem;font-weight:700;line-height:1.6;color:#444;}
+
+/* DRAG */
+.drag-instr{font-size:1rem;font-weight:700;text-align:center;margin-bottom:16px;color:#555;cursor:pointer;}
+.drag-instr::before{content:'🔊 ';opacity:.7;}
+.drag-ws{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:560px){.drag-ws{grid-template-columns:1fr;}}
+.drag-bank{border:3px dashed;border-radius:16px;padding:14px;min-height:190px;}
+.drag-bank h3{font-family:'Fredoka One',cursive;font-size:1rem;margin-bottom:10px;}
+.drop-zones{display:flex;flex-direction:column;gap:12px;}
+.drop-zone{background:white;border:3px dashed #ccc;border-radius:14px;padding:12px 14px;min-height:60px;display:flex;align-items:flex-start;gap:10px;transition:all .2s;font-weight:700;}
+.drop-zone.over{border-color:var(--green);background:#f0fff8;transform:scale(1.02);}
+.drop-zone .dz-em{font-size:1.5rem;flex-shrink:0;margin-top:2px;}
+.placed-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
+.drag-item{background:white;border:3px solid;border-radius:12px;padding:8px 12px;margin-bottom:8px;cursor:pointer;font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:7px;transition:all .2s;user-select:none;}
+.drag-item:hover{transform:scale(1.03);}
+.drag-item.placed{opacity:.35;pointer-events:none;}
+.drag-item.selected{transform:scale(1.06);box-shadow:0 0 0 3px #FFD166,0 6px 18px rgba(0,0,0,.2);background:#FFFBEA;}
+.tap-zone{cursor:pointer;transition:all .2s;}
+.tap-zone.ready{border-color:var(--green)!important;background:#f0fff8!important;transform:scale(1.02);}
+.placed-tag{border-radius:10px;padding:5px 9px;font-size:.83rem;font-weight:700;display:flex;align-items:center;gap:5px;animation:popIn .3s ease;border:2px solid;}
+@keyframes popIn{from{transform:scale(.5);opacity:0;}to{transform:scale(1);opacity:1;}}
+.drag-reset-btn{border:none;border-radius:12px;padding:9px 20px;font-family:'Fredoka One',cursive;font-size:.95rem;cursor:pointer;margin-top:14px;display:block;margin-left:auto;transition:all .2s;color:white;}
+.drag-reset-btn:hover{transform:scale(1.05);}
+#drag-score{text-align:center;font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--green);margin-top:12px;}
+
+/* QUIZ */
+.quiz-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.quiz-topbar h2{font-family:'Fredoka One',cursive;font-size:1.4rem;}
+.quiz-prog{font-family:'Fredoka One',cursive;font-size:.95rem;color:#888;background:#f0f0f0;padding:5px 13px;border-radius:20px;}
+.quiz-card{background:white;border-radius:20px;padding:26px;box-shadow:var(--shadow);}
+.quiz-q-text{font-size:1.15rem;font-weight:800;margin-bottom:18px;line-height:1.55;cursor:pointer;display:block;border-radius:10px;padding:6px;}
+.quiz-q-text::before{content:'🔊 ';font-size:.82rem;opacity:.6;}
+.quiz-q-text:hover{background:#f5f5f5;}
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.q-opt{background:#F7F9FC;border:3px solid #ddd;border-radius:14px;padding:12px 16px;font-size:.98rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:9px;text-align:left;}
+.q-opt:hover:not(.disabled){border-color:currentColor;opacity:.85;}
+.q-opt.correct{border-color:var(--green);background:#E8FFF4;color:#059669;}
+.q-opt.wrong{border-color:var(--red);background:#FFE8EC;color:var(--red);}
+.q-opt.disabled{cursor:not-allowed;}
+.q-opt .opt-l{background:#ddd;border-radius:50%;width:28px;height:28px;min-width:28px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:.9rem;}
+.q-opt.correct .opt-l{background:var(--green);color:white;}
+.q-opt.wrong .opt-l{background:var(--red);color:white;}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:14px;font-weight:700;font-size:.95rem;display:none;border:2px solid;}
+.quiz-feedback.show{display:block;animation:fadeIn .3s;}
+.quiz-feedback.correct{background:#E8FFF4;color:#059669;border-color:var(--green);}
+.quiz-feedback.wrong{background:#FFE8EC;color:var(--red);border-color:var(--red);}
+.quiz-nav{display:flex;justify-content:flex-end;margin-top:16px;}
+.quiz-next-btn{font-family:'Fredoka One',cursive;font-size:.98rem;padding:11px 22px;border:none;border-radius:14px;cursor:pointer;transition:all .2s;color:white;}
+.quiz-next-btn:disabled{opacity:.4;pointer-events:none;}
+.quiz-result{text-align:center;padding:36px 20px;display:none;}
+.quiz-result.show{display:block;animation:fadeIn .5s;}
+.quiz-score-big{font-family:'Fredoka One',cursive;font-size:4.5rem;line-height:1;}
+.quiz-result h3{font-family:'Fredoka One',cursive;font-size:1.7rem;margin:8px 0;}
+.quiz-result p{font-size:1.05rem;color:#666;}
+.stars{color:#FFD166;font-size:1.4rem;letter-spacing:2px;display:block;margin-top:8px;}
+.quiz-retry-btn{border:none;border-radius:14px;padding:13px 28px;font-family:'Fredoka One',cursive;font-size:1.05rem;cursor:pointer;margin-top:18px;transition:all .2s;color:white;}
+.quiz-retry-btn:hover{transform:scale(1.06);}
+
+@media(max-width:600px){#home-header h1{font-size:2rem;}.exp-grid{grid-template-columns:1fr 1fr;}.hdr-text h1{font-size:1.65rem;}.impact-grid{grid-template-columns:1fr 1fr;}.persp-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <header id="home-header">
+    <span class="hero-icon">💧</span>
+    <h1>Air and Water in the Environment!</h1>
+    <p>Grade 2 Science · Ontario Curriculum — Strand E</p>
+  </header>
+  <div class="home-main">
+    <div class="intro-box">
+      <h2>🌊 What Will We Learn?</h2>
+      <p onclick="speakText('In this unit we will explore all eight Ontario curriculum expectations about air and water. We will learn how people affect air and water, how to use water wisely, where fresh water comes from around the world, the properties of air and water, sources of water, the water cycle, the three states of water, and how living things depend on air and water. Click any card below to begin!')">
+        In this unit we explore all 8 Ontario curriculum expectations about air and water! We learn how people affect air and water, how to save water at home, where fresh water is found around the world, what air and water are made of, where water comes from, the water cycle, the three states of water, and how all living things need air and water. Click any card to begin!
+      </p>
+    </div>
+    <h2 class="grid-title">📋 Choose a Curriculum Expectation!</h2>
+    <div class="exp-grid">
+      <div class="exp-card ec-sky" onclick="openExp('e11')">
+        <span class="exp-emoji-big">🌍</span><span class="exp-code">E1.1</span>
+        <div class="exp-title-big">Protecting Air &amp; Water</div>
+        <div class="exp-desc-sm">How do humans affect air and water? What can WE do to help protect them?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-teal" onclick="openExp('e12')">
+        <span class="exp-emoji-big">🚿</span><span class="exp-code">E1.2</span>
+        <div class="exp-title-big">Using Water Wisely</div>
+        <div class="exp-desc-sm">How do you use water at home? How can you use less water every day?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-green" onclick="openExp('e13')">
+        <span class="exp-emoji-big">🗺️</span><span class="exp-code">E1.3</span>
+        <div class="exp-title-big">Fresh Water Around the World</div>
+        <div class="exp-desc-sm">Where is fresh water found? Why don't all people have clean water to drink?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-purple" onclick="openExp('e21')">
+        <span class="exp-emoji-big">🌬️</span><span class="exp-code">E2.1</span>
+        <div class="exp-title-big">Properties of Air &amp; Water</div>
+        <div class="exp-desc-sm">What are the key properties of air and water? What makes them special?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-orange" onclick="openExp('e22')">
+        <span class="exp-emoji-big">🏞️</span><span class="exp-code">E2.2</span>
+        <div class="exp-title-big">Sources of Water</div>
+        <div class="exp-desc-sm">Where do we find water in nature and in the places people build?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-red" onclick="openExp('e23')">
+        <span class="exp-emoji-big">🌧️</span><span class="exp-code">E2.3</span>
+        <div class="exp-title-big">The Water Cycle</div>
+        <div class="exp-desc-sm">How does water move from the ground to the sky and back again?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-pink" onclick="openExp('e24')">
+        <span class="exp-emoji-big">🧊</span><span class="exp-code">E2.4</span>
+        <div class="exp-title-big">Three States of Water</div>
+        <div class="exp-desc-sm">Water can be a solid, a liquid, or a gas! How does temperature change its state?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+      <div class="exp-card ec-yellow" onclick="openExp('e25')">
+        <span class="exp-emoji-big">🌱</span><span class="exp-code">E2.5</span>
+        <div class="exp-title-big">Living Things Need Air &amp; Water</div>
+        <div class="exp-desc-sm">How do plants, animals, and people depend on air and water to survive?</div>
+        <div class="go-btn">▶ Let's Learn!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPECTATION PAGE -->
+<div id="page-exp" class="page">
+  <div id="exp-header" class="exp-header hdr-sky">
+    <div class="hdr-inner">
+      <div id="exp-icon" class="hdr-icon-big">🌍</div>
+      <div class="hdr-text">
+        <h1 id="exp-title">Protecting Air &amp; Water</h1>
+        <p id="exp-sub">E1.1 · Grade 2 Science — Air and Water in the Environment</p>
+      </div>
+      <button class="hdr-home-btn" onclick="goHome()">🏠 Home</button>
+    </div>
+  </div>
+  <nav class="tab-nav">
+    <div class="tab-nav-inner">
+      <button class="tab-btn active" id="tbn-learn"    onclick="showTab('learn',this)">📚 Learn</button>
+      <button class="tab-btn"        id="tbn-activity" onclick="showTab('activity',this)">🎮 Activity</button>
+      <button class="tab-btn"        id="tbn-quiz"     onclick="showTab('quiz',this)">🧠 Quiz</button>
+    </div>
+  </nav>
+  <div class="exp-main" id="exp-content"></div>
+</div>
+
+<script>
+/* SPEECH */
+function speakText(t){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t.replace(/[\u{1F300}-\u{1FAFF}]/gu,''));
+  u.rate=.9;u.pitch=1.1;window.speechSynthesis.speak(u);
+}
+function speakEl(el){speakText((el.dataset.speak||el.textContent).replace(/🔊/g,'').trim());}
+let _hov=null;
+function hss(el){clearTimeout(_hov);const t=(el.dataset.hoverSpeak||el.dataset.speak||el.textContent).replace(/🔊/g,'').trim();if(!t)return;_hov=setTimeout(()=>speakText(t),500);}
+function hse(){clearTimeout(_hov);}
+
+/* NAV */
+let activeId='';
+let quizState={q:0,score:0,answered:[]};
+let dragState={};
+
+function openExp(id){
+  activeId=id;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-exp').classList.add('active');
+  const e=EX[id];
+  const hdr=document.getElementById('exp-header');
+  hdr.className='exp-header '+e.hdr;
+  document.getElementById('exp-icon').textContent=e.icon;
+  document.getElementById('exp-title').textContent=e.title;
+  document.getElementById('exp-sub').textContent=e.code+' · Grade 2 Science — Air and Water in the Environment';
+  ['learn','activity','quiz'].forEach(t=>{
+    const btn=document.getElementById('tbn-'+t);
+    btn.style.setProperty('--tab-accent',e.accent);
+  });
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tbn-learn').classList.add('active');
+  quizState={q:0,score:0,answered:[]};
+  dragState[id]={};
+  render(activeId,'learn');
+  window.scrollTo(0,0);
+}
+function goHome(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-home').classList.add('active');
+  window.scrollTo(0,0);
+}
+function showTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render(activeId,tab);
+  window.scrollTo(0,0);
+}
+function render(id,tab){
+  const el=document.getElementById('exp-content');
+  const e=EX[id];
+  if(tab==='learn') el.innerHTML=buildLearn(e,id);
+  else if(tab==='activity') el.innerHTML=buildActivity(e,id);
+  else if(tab==='quiz'){el.innerHTML=buildQuizShell(e);renderQ(e);}
+}
+function speakAll(btn){
+  const body=btn.closest('.card').querySelector('.learn-body');
+  if(!body)return;
+  speakText(Array.from(body.querySelectorAll('.speakable')).map(s=>s.textContent.replace(/🔊/g,'').trim()).join('. '));
+}
+
+/* ════════════════════════════════════
+   DATA
+════════════════════════════════════ */
+const EX={
+
+e11:{
+  icon:'🌍',code:'E1.1',title:'Protecting Air & Water',hdr:'hdr-sky',accent:'#06A6D4',accentLight:'rgba(6,166,212,.1)',
+  dragBorderColor:'#C4E8F5',dragBg:'#EAF7FF',
+  conceptText:'The things people do every day can make air and water dirty. Pollution hurts animals, plants, and people. But we can all help! When we work together, we can keep our air and water clean and healthy.',
+  learnCards:[
+    {color:'b-sky',title:'🚗 How Do Humans Affect Air?',accent:'#06A6D4',content:[
+      'Cars and trucks burn fuel. This makes smoke that goes into the air. The smoke is called air pollution.',
+      'Factories make things we use, like toys and clothes. But some factories also put dirty smoke into the air.',
+      'Burning wood makes smoke. Too much smoke in the air makes it hard to breathe.',
+      'Air pollution can make people cough and feel sick. It is also bad for birds and other animals.',
+      'We can help by walking, biking, or taking the bus instead of driving. Using less electricity helps too!'
+    ]},
+    {color:'b-teal',title:'💧 How Do Humans Affect Water?',accent:'#00C9A7',content:[
+      'When it rains, dirty water from roads and farms can flow into rivers and lakes. This is called water pollution.',
+      'Factories and farms sometimes put chemicals into rivers. This can make fish and frogs very sick.',
+      'Throwing garbage near water is very harmful. Plastic bags and bottles hurt animals that live in water.',
+      'Oil from cars can drip onto roads. When it rains, the oil washes into streams and ponds.',
+      'Clean water is very important for all living things. Once water is polluted, it is very hard to clean up!'
+    ]},
+    {color:'b-green',title:'🪶 Indigenous Perspectives on Water',accent:'#06D6A0',content:[
+      'Many First Nations, Métis, and Inuit peoples have always cared for the land and water.',
+      'Indigenous peoples see water as alive and sacred. They say water must be treated with respect.',
+      'In many First Nations teachings, water is a gift that connects all living things on Earth.',
+      'The Anishinaabe people call water "Nibi." They teach that we must be caretakers of water for future children.',
+      'Inuit communities in the North depend on clean sea water, rivers, and ice for food, travel, and life.'
+    ]}
+  ],
+  funFact:'Fun Fact! In many First Nations communities, Water Walkers carry water and pray for clean water all across Canada. Grandmother Josephine Mandamin walked all the way around the Great Lakes — over 25,000 kilometres — to remind people to protect our water! 💧🚶',
+  thinkText:'Look around your neighbourhood. Do you see anything that could pollute the air or water? What is one thing YOUR family could do to help protect air and water?',
+  perspItems:[
+    {emoji:'👩‍👧',title:'A Child\'s View',text:'We want clean water to swim in, drink, and play near. Pollution makes us sad and can make us sick.',color:'#C4E8F5',border:'#06A6D4',titleColor:'#06A6D4'},
+    {emoji:'🪶',title:'First Nations View',text:'Water is sacred and alive. We must care for it as a gift — for us and for all future children.',color:'#C4F0E5',border:'#06D6A0',titleColor:'#06A6D4'},
+    {emoji:'🐟',title:'An Animal\'s View',text:'Fish, frogs, and ducks need clean water to survive. Pollution destroys their homes and food.',color:'#C0F5EC',border:'#00C9A7',titleColor:'#00C9A7'},
+    {emoji:'👩‍🔬',title:'A Scientist\'s View',text:'Scientists test water and air to find pollution. They help governments make rules to keep nature clean.',color:'#E3D4F8',border:'#9B5DE5',titleColor:'#9B5DE5'},
+  ],
+  actionSteps:[
+    {text:'Walk or bike instead of riding in a car whenever you can. This puts less smoke in the air!'},
+    {text:'Never throw garbage near water or on the ground. Pick up litter you see outside.'},
+    {text:'Turn off the tap when you brush your teeth. Don\'t let clean water run away!'},
+    {text:'Use both sides of paper, and recycle. Making new paper uses a lot of water.'},
+    {text:'Plant a tree or help water a garden. Plants clean the air and help water soak into the ground.'},
+  ],
+  dragItems:[
+    {id:'d1',emoji:'🚗',label:'Car Exhaust',answer:'bad'},
+    {id:'d2',emoji:'🚲',label:'Riding a Bike',answer:'good'},
+    {id:'d3',emoji:'🗑️',label:'Littering Near a River',answer:'bad'},
+    {id:'d4',emoji:'🌳',label:'Planting Trees',answer:'good'},
+    {id:'d5',emoji:'🏭',label:'Factory Smoke',answer:'bad'},
+    {id:'d6',emoji:'♻️',label:'Recycling',answer:'good'},
+    {id:'d7',emoji:'🛢️',label:'Oil Spill in a Lake',answer:'bad'},
+    {id:'d8',emoji:'🚶',label:'Walking to School',answer:'good'},
+  ],
+  dragYesLabel:'✅ Helps Protect Air & Water',dragNoLabel:'❌ Harms Air & Water',dragYesEmoji:'✅',dragNoEmoji:'❌',
+  questions:[
+    {q:'What do cars and trucks put into the air?',opts:['Clean water','Smoke and air pollution','Sunlight','Fresh air'],correct:1,right:'Yes! Cars and trucks burn fuel and make smoke. That smoke is called air pollution!',wrong:'Not quite! Cars and trucks make smoke when they burn fuel. That is called air pollution.'},
+    {q:'How can dirty water from roads get into rivers?',opts:['It falls up into the sky','It freezes into ice cubes','When it rains, dirty water flows from roads into rivers and lakes','Rivers make their own dirt'],correct:2,right:'Correct! When it rains, dirty water washes off roads and flows right into rivers and lakes!',wrong:'Good try! When it rains, dirty water on roads flows downhill into rivers and lakes.'},
+    {q:'Why do many First Nations and Inuit peoples say water is sacred?',opts:['Because it is very cold','Because it is a gift that connects all living things and must be cared for','Because it is hard to carry','Because it falls from the sky'],correct:1,right:'Excellent! Many Indigenous peoples teach that water is a gift that connects all living things. We must care for it!',wrong:'Think again! Many First Nations and Inuit peoples teach that water is a sacred gift that connects all living things.'},
+    {q:'Which of these actions helps PROTECT air and water?',opts:['Throwing plastic bags into a river','Leaving the tap running all day','Biking or walking instead of driving a car','Dumping oil into a stream'],correct:2,right:'Amazing! Biking or walking makes no smoke at all — it keeps our air much cleaner!',wrong:'Good try! Biking or walking produces no smoke or pollution — a great way to help protect our air!'},
+    {q:'What happens to air and water when factories dump chemicals into rivers?',opts:['The water becomes tastier','Fish and frogs can get very sick and die','The river flows faster','The water turns blue'],correct:1,right:'Perfect! Chemicals in rivers are very harmful. They can make fish, frogs, and other animals very sick!',wrong:'Good try! Chemicals dumped into rivers can make fish, frogs, and other water animals very sick.'},
+  ]
+},
+
+e12:{
+  icon:'🚿',code:'E1.2',title:'Using Water Wisely',hdr:'hdr-teal',accent:'#00C9A7',accentLight:'rgba(0,201,167,.1)',
+  dragBorderColor:'#C0F5EC',dragBg:'#EAFFF8',
+  conceptText:'We use water every single day — for drinking, cooking, washing, and flushing. But clean water is a precious gift. We must use it wisely so there is enough for everyone — and for the animals and plants that need it too!',
+  learnCards:[
+    {color:'b-teal',title:'🏠 How Do We Use Water at Home?',accent:'#00C9A7',content:[
+      'We drink water to stay healthy. Our bodies are mostly water — we need it every day!',
+      'We use water to cook food, like boiling pasta or making soup.',
+      'We use water to wash our hands, brush our teeth, and have a bath or shower.',
+      'We flush the toilet many times a day. Each flush uses a lot of water!',
+      'We water plants and gardens. We also wash clothes, dishes, and floors.',
+      'A family of four can use over 400 litres of water in one day. That is a lot!'
+    ]},
+    {color:'b-green',title:'💡 How Can We Save Water?',accent:'#06D6A0',content:[
+      'Turn off the tap while you brush your teeth. A running tap wastes 6 litres every minute!',
+      'Take shorter showers instead of long baths. A shower uses much less water.',
+      'Only run the dishwasher or washing machine when it is full. Half-loads waste water.',
+      'Fix dripping taps! A leaky tap can waste thousands of litres of water every year.',
+      'Water plants in the morning or evening — not in the hot sun, when water evaporates quickly.',
+      'Collect rainwater in a bucket to water your garden instead of using the hose.'
+    ]},
+    {color:'b-sky',title:'📋 My Water-Saving Plan',accent:'#06A6D4',content:[
+      'A water-saving plan tells you exactly what YOU will do to use less water each day.',
+      'Step 1: Think about how you use water at home. Where do you use the most?',
+      'Step 2: Choose two or three things you will change. For example: shorter showers and turning off the tap.',
+      'Step 3: Tell your family your plan. Ask them to help! Saving water is easier together.',
+      'Step 4: Check each week. Are you keeping to your plan? How does it feel to save water?'
+    ]}
+  ],
+  funFact:'Fun Fact! If you leave the tap running while brushing your teeth twice a day, you waste over 4,000 litres of water in just one year! That is enough to fill a small swimming pool! 🦷💧',
+  thinkText:'Think about your morning routine. Count every time you use water from when you wake up until you leave for school. How could you save water during that time?',
+  dragItems:[
+    {id:'d1',emoji:'🦷',label:'Tap Off While Brushing',answer:'good'},
+    {id:'d2',emoji:'🚿',label:'15-Minute Shower',answer:'bad'},
+    {id:'d3',emoji:'🪣',label:'Collecting Rainwater',answer:'good'},
+    {id:'d4',emoji:'🚰',label:'Dripping Tap Left Running',answer:'bad'},
+    {id:'d5',emoji:'🌿',label:'Watering Plants in the Morning',answer:'good'},
+    {id:'d6',emoji:'👕',label:'Half-Full Washing Machine',answer:'bad'},
+    {id:'d7',emoji:'🔧',label:'Fixing a Leaky Tap',answer:'good'},
+    {id:'d8',emoji:'🐕',label:'Hose Left On for Pet Bath',answer:'bad'},
+  ],
+  dragYesLabel:'💧 Saves Water',dragNoLabel:'🚫 Wastes Water',dragYesEmoji:'💧',dragNoEmoji:'🚫',
+  questions:[
+    {q:'How much water does a running tap waste every minute?',opts:['1 litre','6 litres','50 litres','1 millilitre'],correct:1,right:'Yes! A running tap wastes about 6 litres of water every minute. Turning it off really makes a big difference!',wrong:'Not quite! A running tap wastes about 6 litres of water every minute — that adds up very fast!'},
+    {q:'Which of these is the BEST way to save water in the shower?',opts:['Use more soap','Take a shorter shower','Turn the water on hotter','Sing louder'],correct:1,right:'Correct! Taking a shorter shower uses much less water than a long shower or a full bath. Great choice!',wrong:'Good try! Taking a shorter shower is the best way — it uses much less water than a long shower or a bath.'},
+    {q:'Why should you only run the dishwasher when it is completely full?',opts:['So the dishes get cleaner','To use the same amount of water for more dishes, instead of wasting it on a half-load','So it makes less noise','Because the dishes like company'],correct:1,right:'Excellent! Running a full load means the same amount of water washes MORE dishes. Half-loads waste water!',wrong:'Think again! A full load uses the same water as a half load — so waiting until it is full wastes less water overall.'},
+    {q:'What is a good way to water your garden without wasting water?',opts:['Water it at noon in the hot sun','Use a sprinkler all day','Collect rainwater in a bucket and use that','Water it with juice'],correct:2,right:'Amazing! Collecting rainwater is free and does not waste tap water at all — plants love it too!',wrong:'Good try! Collecting rainwater in a bucket is great — it is free, and watering in the morning or evening stops it evaporating in the heat.'},
+    {q:'What is the first step in making a water-saving plan?',opts:['Buy new taps','Think about how you use water at home and where you use the most','Stop drinking water','Tell everyone at school right away'],correct:1,right:'Perfect! Before you can save water, you need to think about where and how you use it at home. Then you can make a plan!',wrong:'Good try! The first step is to think about how and where you use water at home — then you can decide what to change.'},
+  ]
+},
+
+e13:{
+  icon:'🗺️',code:'E1.3',title:'Fresh Water Around the World',hdr:'hdr-green',accent:'#06D6A0',accentLight:'rgba(6,214,160,.1)',
+  dragBorderColor:'#C4F0E5',dragBg:'#EAFFF5',
+  conceptText:'Most of the water on Earth is salty ocean water. Only a very small amount is fresh water that people and animals can drink. Not everyone in the world has clean, safe water close to home. That is a very important problem to understand!',
+  learnCards:[
+    {color:'b-green',title:'🌊 Where is Fresh Water?',accent:'#06D6A0',content:[
+      'About 71% of Earth is covered in water. But most of it is ocean water — too salty to drink.',
+      'Only about 3% of Earth\'s water is fresh water. And most of THAT is frozen in glaciers and ice caps!',
+      'Less than 1% of all Earth\'s water is easy to reach and drink. That is a tiny amount!',
+      'Fresh water is found in rivers, lakes, ponds, and underground in rock layers called aquifers (say: AK-wee-fer).',
+      'Canada is very lucky — it has about 20% of the world\'s fresh water in its lakes and rivers!',
+      'The Great Lakes in Ontario hold more fresh water than almost anywhere else on Earth.'
+    ]},
+    {color:'b-teal',title:'🌍 Not Everyone Has Clean Water',accent:'#00C9A7',content:[
+      'In some parts of the world, people walk many kilometres every day just to reach a water source.',
+      'In some places, the only water nearby is dirty and not safe to drink. It can make people very sick.',
+      'In many First Nations communities in Canada, people cannot drink the water from their taps. They must use bottled water.',
+      'Children in some countries miss school because they must help carry water home for their families.',
+      'When people do not have clean water, they can get very sick from diseases that spread through dirty water.',
+      'Organizations around the world work hard to help build wells and water systems in communities that need them.'
+    ]},
+    {color:'b-purple',title:'💪 What Can We Do to Help?',accent:'#9B5DE5',content:[
+      'We can learn about water issues in other communities and share what we know with friends and family.',
+      'We can save water at home so less clean water is wasted. Every drop counts!',
+      'We can support organizations that help build water systems in communities without safe water.',
+      'We can speak up and write letters asking leaders to protect clean water for everyone.',
+      'We can learn from Indigenous peoples who have been protecting fresh water in Canada for thousands of years.'
+    ]}
+  ],
+  funFact:'Fun Fact! If all the water on Earth were shrunk down to fit in a big jug, the fresh water you could actually drink would fill just one small teaspoon! That shows how precious fresh water really is. 🫙💧',
+  thinkText:'Think about turning on your tap and getting clean water right away. How would your day be different if you had to walk 5 kilometres to get water every morning? What might you have to skip?',
+  dragItems:[
+    {id:'d1',emoji:'🏔️',label:'Glacier Ice',answer:'fresh'},
+    {id:'d2',emoji:'🌊',label:'Ocean Water',answer:'salt'},
+    {id:'d3',emoji:'🏞️',label:'River',answer:'fresh'},
+    {id:'d4',emoji:'🐠',label:'Coral Reef Sea',answer:'salt'},
+    {id:'d5',emoji:'🏙️',label:'Underground Aquifer',answer:'fresh'},
+    {id:'d6',emoji:'⛵',label:'The Atlantic Ocean',answer:'salt'},
+    {id:'d7',emoji:'🍃',label:'Forest Lake',answer:'fresh'},
+    {id:'d8',emoji:'🦀',label:'Salty Tidal Marsh',answer:'salt'},
+  ],
+  dragYesLabel:'💧 Fresh Water',dragNoLabel:'🌊 Salt Water',dragYesEmoji:'💧',dragNoEmoji:'🌊',
+  questions:[
+    {q:'What percentage of all water on Earth is fresh water?',opts:['About 50%','About 25%','About 3%','About 90%'],correct:2,right:'Yes! Only about 3% of Earth\'s water is fresh water — and most of that is frozen in glaciers. Fresh water is very rare!',wrong:'Not quite! Only about 3% of Earth\'s water is fresh water. Most is salty ocean water we cannot drink.'},
+    {q:'Where is MOST of Earth\'s fresh water found?',opts:['In rivers and lakes','In swimming pools','Frozen in glaciers and ice caps','Underground in cities'],correct:2,right:'Correct! Most fresh water on Earth is actually frozen solid in glaciers and ice caps — so it is hard to reach!',wrong:'Good try! Most of Earth\'s fresh water is actually frozen in glaciers and polar ice caps — not easy to use!'},
+    {q:'Why do some children miss school in countries without easy water access?',opts:['Because school is too far','Because they must help carry water home for their families every day','Because they do not like school','Because there is no rain'],correct:1,right:'Excellent! In some communities, children spend hours each day walking to collect water. This leaves no time for school.',wrong:'Think again! Many children must walk long distances to collect water for their families — leaving no time for school.'},
+    {q:'Why is Canada considered very lucky for fresh water?',opts:['It rains every single day','Canada has about 20% of the world\'s total fresh water in its lakes and rivers','Canada invented water','It is always frozen there'],correct:1,right:'Amazing! Canada holds about 20% of the world\'s fresh water — especially in the Great Lakes. That is a huge responsibility!',wrong:'Good try! Canada is home to about 20% of the world\'s fresh water — including the massive Great Lakes in Ontario.'},
+    {q:'What is one way kids can help communities that do not have safe water?',opts:['Use more water at home','Save water at home and learn about water issues to share with others','Stop drinking water','Ignore the problem'],correct:1,right:'Perfect! Saving water and learning about water issues are real, powerful things kids can do to help!',wrong:'Good try! Saving water at home and raising awareness about water issues are great ways kids can help.'},
+  ]
+},
+
+e21:{
+  icon:'🌬️',code:'E2.1',title:'Properties of Air & Water',hdr:'hdr-purple',accent:'#9B5DE5',accentLight:'rgba(155,93,229,.1)',
+  dragBorderColor:'#E3D4F8',dragBg:'#F5EEFF',
+  conceptText:'Air and water are two of the most important things on Earth! They have special properties — things that describe what they are like. Understanding these properties helps us use air and water safely and wisely every day.',
+  learnCards:[
+    {color:'b-purple',title:'🌬️ Key Properties of Air',accent:'#9B5DE5',content:[
+      'Air is all around us, but we cannot see it. Clean air has NO colour and NO smell.',
+      'Air takes up space. Blow up a balloon — the air inside fills all that room!',
+      'Air has weight! A room full of air actually weighs about the same as a dog. Hard to believe!',
+      'Air can be compressed — squeezed into a smaller space. That is how bicycle tyres stay firm.',
+      'Moving air is called WIND. Wind can move leaves, push clouds, and even run wind turbines.',
+      'Air pushes on everything around it. This push is called air pressure.'
+    ]},
+    {color:'b-sky',title:'💧 Key Properties of Water',accent:'#06A6D4',content:[
+      'Water is a liquid. It flows and takes the shape of whatever container it is in.',
+      'Pure water has NO colour, NO smell, and NO taste. It is clear!',
+      'Water is very heavy. One litre of water weighs exactly 1 kilogram.',
+      'Water can dissolve many things — like salt and sugar. This makes it useful for cooking and cleaning.',
+      'Water is attracted to itself — it sticks together in drops. This is called surface tension.',
+      'Water is the only common substance on Earth that exists naturally as a solid, liquid, AND gas!'
+    ]},
+    {color:'b-teal',title:'🆚 How Are Air and Water Similar?',accent:'#00C9A7',content:[
+      'Both air and water have NO colour and NO taste when they are clean and pure.',
+      'Both take up space — you can feel air in a balloon and water in a cup.',
+      'Both can move and flow. Air moves as wind; water moves in rivers and waves.',
+      'Both exert pressure — air pressure pushes on our skin; water pressure pushes on swimmers.',
+      'Both are essential for life — every living thing on Earth needs air and water to survive.'
+    ]}
+  ],
+  funFact:'Fun Fact! Water is one of the only substances on Earth that gets LESS dense when it freezes. Ice floats on water because solid ice is lighter than liquid water. If ice sank, lakes would freeze solid from the bottom up — and fish could not survive! 🐟🧊',
+  thinkText:'Fill a plastic bag with air and tie it shut. Then fill another bag with water. Hold one in each hand. What do you notice? How are they the same? How are they different?',
+  dragItems:[
+    {id:'d1',emoji:'💨',label:'Has No Colour',answer:'good'},
+    {id:'d2',emoji:'🎈',label:'Can Be Compressed',answer:'good'},
+    {id:'d3',emoji:'💨',label:'Moving Form is Called Wind',answer:'good'},
+    {id:'d4',emoji:'🌬️',label:'Fills a Balloon',answer:'good'},
+    {id:'d5',emoji:'💧',label:'Has Surface Tension',answer:'bad'},
+    {id:'d6',emoji:'🫧',label:'Can Dissolve Sugar',answer:'bad'},
+    {id:'d7',emoji:'💧',label:'Flows into a Container',answer:'bad'},
+    {id:'d8',emoji:'⚖️',label:'Weighs 1 kg per Litre',answer:'bad'},
+  ],
+  dragYesLabel:'🌬️ Property of AIR',dragNoLabel:'💧 Property of WATER',dragYesEmoji:'🌬️',dragNoEmoji:'💧',
+  questions:[
+    {q:'Which of these is a key property of clean air?',opts:['It is blue and smells like flowers','It has no colour and no smell','It is always warm','It is heavier than water'],correct:1,right:'Yes! Clean air has no colour and no smell. If you can see or smell something in the air, that is usually a sign of pollution!',wrong:'Not quite! Clean air has no colour and no smell. Coloured or smelly air usually means there is pollution.'},
+    {q:'What is it called when air is moving?',opts:['Rain','Pressure','Wind','Condensation'],correct:2,right:'Correct! Moving air is called wind. Wind can move leaves, push sails, and even power wind turbines to make electricity!',wrong:'Good try! Moving air is called wind. It can push things, move clouds, and power wind turbines.'},
+    {q:'Why does ice FLOAT on top of water?',opts:['Ice is made of a different substance','Ice is less dense than liquid water, so it is lighter and floats','Ice is very slippery','Water pushes ice upward on purpose'],correct:1,right:'Excellent! Ice is less dense than liquid water — that makes it lighter, so it floats. This is very important for fish in winter!',wrong:'Think again! Ice is less dense than liquid water. That means it is lighter, so it floats — keeping lakes from freezing solid.'},
+    {q:'Which property do BOTH air and water share?',opts:['Both are always liquid','Both can dissolve salt','Both have no colour when clean and pure','Both can only be found underground'],correct:2,right:'Amazing! Both clean air and pure water have no colour — they are both clear and colourless. Great science knowledge!',wrong:'Good try! Both clean air and pure water have no colour — they are both transparent and colourless when pure.'},
+    {q:'What does it mean that water can DISSOLVE things?',opts:['Water can freeze things solid','Water can make some substances disappear into it, like sugar or salt','Water can fly into the sky','Water can change colour'],correct:1,right:'Perfect! When water dissolves something like salt or sugar, that substance mixes all the way through the water and disappears into it!',wrong:'Good try! Dissolving means a substance mixes completely into water — like sugar or salt vanishing into a glass of water.'},
+  ]
+},
+
+e22:{
+  icon:'🏞️',code:'E2.2',title:'Sources of Water',hdr:'hdr-orange',accent:'#FF6B35',accentLight:'rgba(255,107,53,.1)',
+  dragBorderColor:'#FFD6C4',dragBg:'#FFF8F0',
+  conceptText:'Water is found in many places in nature and in the places that people have built. We call these places sources of water. Knowing where water comes from helps us understand how to protect it and how to make sure everyone has enough!',
+  learnCards:[
+    {color:'b-orange',title:'🏞️ Natural Sources of Water',accent:'#FF6B35',content:[
+      'LAKES are large bodies of fresh water surrounded by land. Lake Ontario is one of the Great Lakes!',
+      'RIVERS are flowing streams of water that move downhill toward a lake or ocean. Many cities are built near rivers.',
+      'PONDS are small, shallow bodies of still water. Frogs, ducks, and insects love ponds!',
+      'WETLANDS are areas where the land is soaked with water, like swamps and marshes. They are home to many animals.',
+      'GROUNDWATER soaks into the ground and collects in underground rock layers. We call these underground water stores aquifers.',
+      'GLACIERS and SNOWPACK store enormous amounts of fresh water as ice. When they melt in spring, rivers fill up!'
+    ]},
+    {color:'b-teal',title:'🏗️ Built (Human-Made) Sources of Water',accent:'#00C9A7',content:[
+      'RESERVOIRS are giant human-made lakes that store water for towns and cities. They work like a huge water tank.',
+      'WATER TREATMENT PLANTS clean lake or river water. They make it safe to drink, then send it to your tap.',
+      'WELLS are deep holes drilled into the ground to reach underground water (groundwater).',
+      'RAIN BARRELS and CISTERNS are containers people use to collect and store rainwater.',
+      'WATER TOWERS are tall structures that hold clean water up high, so water pressure pushes it through pipes to homes.',
+      'DAMS are walls built across rivers. They slow the water down and store it in a big lake.',
+    ]},
+    {color:'b-green',title:'🇨🇦 Water Sources in Our Community',accent:'#06D6A0',content:[
+      'In Ontario, most cities get their tap water from the Great Lakes — especially Lake Ontario and Lake Erie.',
+      'Water from the lake is cleaned at a treatment plant. Then it travels through underground pipes to your tap.',
+      'In rural areas, many families use private wells that pump up groundwater from underground.',
+      'Indigenous peoples have lived near rivers, lakes, and wetlands for thousands of years.',
+      'Water is key to their food, travel, and way of life.',
+    ]}
+  ],
+  funFact:'Fun Fact! The city of Toronto pumps water from Lake Ontario, cleans it at a treatment plant, and then sends it through over 6,000 kilometres of underground pipes to reach homes and schools. That pipe network could stretch across Canada and back! 🚰🗺️',
+  thinkText:'Think about your school and home. Where does your drinking water come from? Is there a natural water source — a river, lake, or pond — near where you live? Have you ever visited it?',
+  dragItems:[
+    {id:'d1',emoji:'🏞️',label:'Lake',answer:'natural'},
+    {id:'d2',emoji:'🚰',label:'Water Tower',answer:'built'},
+    {id:'d3',emoji:'🌊',label:'River',answer:'natural'},
+    {id:'d4',emoji:'🏗️',label:'Reservoir',answer:'built'},
+    {id:'d5',emoji:'🐸',label:'Wetland',answer:'natural'},
+    {id:'d6',emoji:'💧',label:'Water Treatment Plant',answer:'built'},
+    {id:'d7',emoji:'⛏️',label:'Underground Aquifer',answer:'natural'},
+    {id:'d8',emoji:'🪣',label:'Rain Barrel',answer:'built'},
+  ],
+  dragYesLabel:'🌿 Natural Water Source',dragNoLabel:'🏗️ Built Water Source',dragYesEmoji:'🌿',dragNoEmoji:'🏗️',
+  questions:[
+    {q:'What is a RESERVOIR?',opts:['A natural underground river','A human-made lake built to store water for a town or city','A type of fish','A water treatment chemical'],correct:1,right:'Yes! A reservoir is a giant human-made lake built to store water for towns and cities. Great work!',wrong:'Not quite! A reservoir is a giant human-made lake built to store water for towns and cities to use.'},
+    {q:'Where does most of Ontario\'s tap water come from?',opts:['Glaciers in the North','Underground wells only','The Great Lakes — especially Lake Ontario and Lake Erie','The Atlantic Ocean'],correct:2,right:'Correct! Most Ontario cities pump their water from the Great Lakes. It is cleaned at treatment plants before reaching your tap!',wrong:'Good try! Most Ontario cities get their tap water from the Great Lakes, especially Lake Ontario and Lake Erie.'},
+    {q:'What is an AQUIFER?',opts:['A type of river fish','A machine that cleans water','An underground layer of rock that stores water','A tall water storage tower'],correct:2,right:'Excellent! An aquifer is an underground rock layer that holds water. People drill wells down to reach it!',wrong:'Think again! An aquifer is an underground rock layer that stores water. Wells are drilled down to reach it.'},
+    {q:'Why are WETLANDS (swamps and marshes) important water sources?',opts:['They are only good for swimming','They are home to many animals and help clean and store water in the environment','They are where cities get all their tap water','They are too muddy to be useful'],correct:1,right:'Amazing! Wetlands are home to many animals AND they help clean and store water naturally. They are very special places!',wrong:'Good try! Wetlands are valuable because they shelter many animals and naturally filter and store fresh water in the environment.'},
+    {q:'What does a WATER TREATMENT PLANT do?',opts:['It grows water plants in a greenhouse','It stores rain in big barrels','It cleans water from lakes or rivers and makes it safe to drink','It digs wells underground'],correct:2,right:'Perfect! Water treatment plants take water from a lake or river, remove dirt and germs, test it, and then send safe clean water to our taps!',wrong:'Good try! A water treatment plant cleans water from a lake or river — removing dirt and germs — and makes it safe to drink.'},
+  ]
+},
+
+e23:{
+  icon:'🌧️',code:'E2.3',title:'The Water Cycle',hdr:'hdr-red',accent:'#EF233C',accentLight:'rgba(239,35,60,.1)',
+  dragBorderColor:'#FFCCD4',dragBg:'#FFF5F7',
+  conceptText:'Water never disappears! It moves in a circle called the water cycle. Water goes from the ground up to the sky, and then falls back down again. The same water has been going around and around since Earth began — for billions of years!',
+  learnCards:[
+    {color:'b-red',title:'☀️ Stage 1: Evaporation',accent:'#EF233C',content:[
+      'EVAPORATION happens when the sun heats water in oceans, lakes, and rivers.',
+      'The heat turns liquid water into tiny water vapour — a gas that you cannot see.',
+      'This water vapour floats up, up, up into the sky.',
+      'Have you ever seen a puddle disappear after a sunny day? That is evaporation!',
+      'Warm, sunny days cause lots of evaporation. Cold, cloudy days cause much less.'
+    ]},
+    {color:'b-orange',title:'☁️ Stage 2: Condensation',accent:'#FF6B35',content:[
+      'CONDENSATION happens when water vapour rises high into the sky and gets cold.',
+      'The cold air turns the water vapour back into tiny liquid water droplets.',
+      'These tiny droplets cluster together around dust particles to form CLOUDS.',
+      'You can see condensation at home! Look at a cold glass of juice.',
+      'Water droplets form on the outside of the glass. That is condensation!',
+      'High up in the sky, the air gets very cold. That is where condensation happens!',
+    ]},
+    {color:'b-sky',title:'🌧️ Stage 3: Precipitation',accent:'#06A6D4',content:[
+      'PRECIPITATION happens when water droplets in clouds join together and get heavy.',
+      'When the drops are too heavy to stay up, they fall back to Earth.',
+      'Precipitation can be RAIN, SNOW, SLEET, or HAIL — depending on how cold it is.',
+      'In Ontario, we get lots of rain in spring and fall, and snow in winter!',
+      'Heavy rainfall can cause rivers to flood. Light precipitation soaks gently into the soil.'
+    ]},
+    {color:'b-teal',title:'💧 Stage 4: Collection',accent:'#00C9A7',content:[
+      'COLLECTION happens when precipitation lands and gathers in rivers, lakes, ponds, and oceans.',
+      'Some rain soaks into the ground and fills up underground water stores.',
+      'Some water flows downhill in streams and rivers until it reaches a lake or the ocean.',
+      'Snow on mountains melts slowly in spring, feeding rivers for months.',
+      'Then the sun heats the water again — and the whole cycle starts over! It never stops.'
+    ]}
+  ],
+  funFact:'Fun Fact! The water you drank today might have once been in a dinosaur! Water has been cycling on Earth for over 4 billion years. Every drop of water is endlessly recycled — it never truly disappears! 🦕💧',
+  thinkText:'Draw a simple picture of the water cycle and label the four stages — evaporation, condensation, precipitation, and collection. Can you find an example of each one happening near your school or home?',
+  dragItems:[
+    {id:'d1',emoji:'☀️',label:'Sun Heats a Puddle',answer:'good'},
+    {id:'d2',emoji:'❄️',label:'Snow Falls on Mountains',answer:'good'},
+    {id:'d3',emoji:'☁️',label:'Clouds Form in the Sky',answer:'good'},
+    {id:'d4',emoji:'🏞️',label:'River Fills with Rain',answer:'good'},
+    {id:'d5',emoji:'🚗',label:'Car Driving on a Road',answer:'bad'},
+    {id:'d6',emoji:'🌧️',label:'Rain Falls to the Ground',answer:'good'},
+    {id:'d7',emoji:'🔥',label:'Campfire Burning',answer:'bad'},
+    {id:'d8',emoji:'💧',label:'Water Soaks Into the Ground',answer:'good'},
+  ],
+  dragYesLabel:'🌊 Part of the Water Cycle',dragNoLabel:'❌ NOT Part of the Water Cycle',dragYesEmoji:'🌊',dragNoEmoji:'❌',
+  questions:[
+    {q:'What is EVAPORATION?',opts:['When clouds turn into snow','When the sun heats water and turns it into a gas called water vapour','When rivers overflow their banks','When ice melts into liquid water'],correct:1,right:'Yes! Evaporation is when the sun heats water and turns it into water vapour — a gas that floats up into the sky. Great job!',wrong:'Not quite! Evaporation is when the sun heats liquid water, turning it into water vapour that floats up into the sky.'},
+    {q:'What is CONDENSATION in the water cycle?',opts:['When water falls as rain or snow','When rivers collect water','When water vapour cools and turns back into tiny liquid water droplets, forming clouds','When the sun heats the ocean'],correct:2,right:'Correct! When water vapour rises and cools in the sky, it turns back into liquid droplets — that is condensation, which makes clouds!',wrong:'Good try! Condensation is when water vapour cools high in the sky and turns back into tiny liquid droplets that form clouds.'},
+    {q:'Which of these is NOT a type of precipitation?',opts:['Rain','Snow','Hail','Evaporation'],correct:3,right:'Excellent! Evaporation is NOT precipitation — it is when water turns into a gas. Rain, snow, and hail are all types of precipitation!',wrong:'Think again! Evaporation is NOT a type of precipitation. Precipitation includes rain, snow, sleet, and hail — water falling from clouds.'},
+    {q:'What happens during the COLLECTION stage of the water cycle?',opts:['Water vapour rises into the sky','Clouds form high up in the atmosphere','Precipitation lands and gathers in rivers, lakes, and soaks into the ground','The sun heats ocean water'],correct:2,right:'Amazing! During collection, rain and snow land and gather in rivers, lakes, ponds, and underground. Then the cycle starts again!',wrong:'Good try! Collection is when precipitation gathers in rivers, lakes, and soaks into the ground — starting the cycle over again.'},
+    {q:'Why is the water cycle important?',opts:['It makes the sky pretty','It keeps water moving and recycling so there is always fresh water available for living things on Earth','It only helps plants','It creates sunshine'],correct:1,right:'Perfect! The water cycle moves and recycles water continuously — making sure fresh water is always available for plants, animals, and people!',wrong:'Good try! The water cycle continuously recycles water, keeping fresh water available for all living things on Earth — it never stops!'},
+  ]
+},
+
+e24:{
+  icon:'🧊',code:'E2.4',title:'Three States of Water',hdr:'hdr-pink',accent:'#FF4D8B',accentLight:'rgba(255,77,139,.1)',
+  dragBorderColor:'#FFD0E4',dragBg:'#FFF0F7',
+  conceptText:'Water is amazing — it is the only common thing on Earth that we can easily see as a solid, a liquid, AND a gas. Temperature is the key! When water warms up or cools down, it can change completely from one state to another.',
+  learnCards:[
+    {color:'b-pink',title:'🧊 Solid Water — Ice',accent:'#FF4D8B',content:[
+      'When water gets very cold — below 0 degrees Celsius — it freezes and becomes a SOLID called ICE.',
+      'Ice is hard, holds its shape, and does not flow. It takes up a little more space than liquid water.',
+      'We see ice in ice cubes, frozen puddles, icicles, snow, glaciers, and frozen lakes in winter.',
+      'When ice is warmed up past 0 degrees Celsius, it MELTS and turns back into liquid water.',
+      'The temperature at which water freezes and ice melts is called the FREEZING POINT — 0°C.'
+    ]},
+    {color:'b-sky',title:'💧 Liquid Water',accent:'#06A6D4',content:[
+      'Between 0 and 100 degrees Celsius, water is a LIQUID. This is the state we see most often.',
+      'Liquid water flows and takes the shape of any container. It is easy to pour and splash!',
+      'We see liquid water in rain, rivers, lakes, oceans, our taps, and in our bodies.',
+      'Liquid water can slowly evaporate into water vapour — especially on warm, sunny days.',
+      'Liquid water is what most living things drink to stay alive and healthy.'
+    ]},
+    {color:'b-purple',title:'💨 Gas Water — Water Vapour',accent:'#9B5DE5',content:[
+      'When water is heated past 100 degrees Celsius, it BOILS and becomes a GAS called WATER VAPOUR.',
+      'Water vapour is invisible — you cannot see it, but it is in the air around you right now!',
+      'The white steam above a boiling pot is actually tiny liquid droplets — not true water vapour!',
+      'Real water vapour is invisible. You cannot see it, but it is floating in the air right now.',
+      'When water vapour cools down, it condenses back into liquid water — or even freezes into ice crystals!'
+    ]},
+    {color:'b-teal',title:'🌡️ How Temperature Changes the State',accent:'#00C9A7',content:[
+      'FREEZING: Liquid water cools to 0°C → becomes solid ice.',
+      'MELTING: Solid ice warms to 0°C → becomes liquid water.',
+      'EVAPORATION: Liquid water warms and slowly becomes water vapour gas — even below 100°C!',
+      'BOILING: Liquid water reaches 100°C → rapidly becomes water vapour.',
+      'CONDENSATION: Water vapour cools → turns back into liquid water droplets.',
+      'In the water cycle, all three states of water are always present somewhere on Earth!'
+    ]}
+  ],
+  funFact:'Fun Fact! The white fluffy stuff on a cold day is not steam — it is your breath! The warm water vapour in your breath hits the cold air, condenses into tiny liquid droplets, and you can see a tiny little cloud! You are making clouds with your mouth! ☁️😮',
+  thinkText:'Look around your kitchen. Can you find an example of water as a solid, a liquid, and a gas? Think about the freezer, the tap, and the kettle when it boils. What state of water is happening in each place?',
+  dragItems:[
+    {id:'d1',emoji:'🧊',label:'Ice Cube in a Glass',answer:'solid'},
+    {id:'d2',emoji:'🌧️',label:'Falling Rain',answer:'other'},
+    {id:'d3',emoji:'💨',label:'Invisible Water in Air',answer:'other'},
+    {id:'d4',emoji:'❄️',label:'Snowflake',answer:'solid'},
+    {id:'d5',emoji:'🫗',label:'Water in a Cup',answer:'other'},
+    {id:'d6',emoji:'♨️',label:'Steam from Boiling Pot',answer:'other'},
+    {id:'d7',emoji:'🏔️',label:'Glacier on a Mountain',answer:'solid'},
+    {id:'d8',emoji:'🌊',label:'Ocean Wave',answer:'other'},
+  ],
+  dragYesLabel:'🧊 SOLID (Ice / Snow)',dragNoLabel:'💧 LIQUID or 💨 GAS',dragYesEmoji:'🧊',dragNoEmoji:'💧',
+  questions:[
+    {q:'At what temperature does water FREEZE into ice?',opts:['100 degrees Celsius','50 degrees Celsius','0 degrees Celsius','10 degrees Celsius'],correct:2,right:'Yes! Water freezes at 0 degrees Celsius. Below 0°C it is solid ice; above 0°C it melts back to liquid. That temperature is called the freezing point!',wrong:'Not quite! Water freezes at 0 degrees Celsius. That is called the freezing point — below 0 it stays as ice, above 0 it melts.'},
+    {q:'What state of water is water vapour?',opts:['Solid','Liquid','Gas','Frozen'],correct:2,right:'Correct! Water vapour is a gas. It is invisible and floats through the air. There is water vapour in the air around you right now!',wrong:'Good try! Water vapour is a gas — invisible and floating in the air. You cannot see it but it is always there.'},
+    {q:'What happens when liquid water is heated to 100 degrees Celsius?',opts:['It freezes into ice','It turns blue','It boils and becomes water vapour gas','It becomes heavier'],correct:2,right:'Excellent! At 100°C water boils rapidly and becomes water vapour — a gas. That temperature is called the boiling point!',wrong:'Think again! At 100°C, water reaches its boiling point — it rapidly turns into water vapour, a gas.'},
+    {q:'Which of these is an example of CONDENSATION?',opts:['A puddle drying up in the sun','Water droplets forming on a cold glass of juice','A lake freezing in winter','Snow falling from a cloud'],correct:1,right:'Amazing! Water droplets on a cold glass are condensation — water vapour from the warm air cools on the glass and turns back into liquid!',wrong:'Good try! Water droplets forming on a cold glass is condensation — warm air water vapour cools down and turns back into liquid drops.'},
+    {q:'In the water cycle, which stage involves water changing from a LIQUID to a GAS?',opts:['Collection','Precipitation','Condensation','Evaporation'],correct:3,right:'Perfect! Evaporation is when liquid water is heated and turns into water vapour gas — changing from liquid state to gas state!',wrong:'Good try! Evaporation changes liquid water into water vapour gas. The sun provides the heat energy needed for this change.'},
+  ]
+},
+
+e25:{
+  icon:'🌱',code:'E2.5',title:'Living Things Need Air & Water',hdr:'hdr-yellow',accent:'#CC9900',accentLight:'rgba(204,153,0,.1)',
+  dragBorderColor:'#FFF0C0',dragBg:'#FFFBEE',
+  conceptText:'Every living thing on Earth — from a tiny bug to a giant whale to you — needs air and water to stay alive. Without them, life cannot exist. Air and water are the most important things on our planet!',
+  learnCards:[
+    {color:'b-yellow',title:'🧍 How Humans Depend on Air & Water',accent:'#CC9900',content:[
+      'We BREATHE air every few seconds. Oxygen in the air keeps our brain and body working.',
+      'We DRINK water every day. Our bodies are about 60% water — it is in our blood, muscles, and cells!',
+      'We need clean air to breathe. Breathing dirty air can cause coughing, asthma, and other health problems.',
+      'We need clean water to drink. Dirty water contains germs that can make people very sick.',
+      'We use water to grow and cook food. Without water, we could not grow any vegetables or crops.',
+      'We use air to talk, sing, blow, and play wind instruments. Air moving through our throat makes our voice!'
+    ]},
+    {color:'b-green',title:'🐾 How Animals Depend on Air & Water',accent:'#06D6A0',content:[
+      'Animals breathe air through lungs or gills.',
+      'Even fish need oxygen! They pull it right out of the water through their gills.',
+      'All animals need to drink water regularly to survive. Lions, elephants, birds, and bugs all need water.',
+      'Water animals like fish, frogs, and ducks live IN water. Their whole home is water!',
+      'Birds use air currents to fly long distances without using much energy.',
+      'Bees and butterflies need clean air and water to survive and to pollinate flowers.',
+      'If air or water becomes polluted, animals can get sick and their populations can decline.'
+    ]},
+    {color:'b-teal',title:'🌿 How Plants Depend on Air & Water',accent:'#00C9A7',content:[
+      'Plants take in CARBON DIOXIDE from the air. They use it to make food — this process is called photosynthesis.',
+      'Plants release OXYGEN back into the air during photosynthesis. This is the oxygen WE breathe!',
+      'Plants absorb water through their roots. Water carries food and goodness from the soil up to the leaves.',
+      'Without water, plants wilt and die. Farmers must water crops or wait for rain.',
+      'Trees in a forest release water vapour into the air through their leaves — this helps create rainfall!',
+      'Plants, air, and water are all connected in the water cycle and in the food chain. Everything depends on everything!'
+    ]}
+  ],
+  funFact:'Fun Fact! Trees are nature\'s air cleaners! A single large tree can absorb more than 20 kilograms of carbon dioxide from the air every year, and release oxygen for up to 4 people to breathe. Planting trees helps BOTH air AND water! 🌳💨',
+  thinkText:'Imagine a world with no clean air or water. What would happen to humans? To animals? To plants? List three living things in your neighbourhood and explain how each one depends on air and water.',
+  dragItems:[
+    {id:'d1',emoji:'🫁',label:'Breathing Oxygen',answer:'air'},
+    {id:'d2',emoji:'🥤',label:'Drinking to Survive',answer:'water'},
+    {id:'d3',emoji:'🐟',label:'Fish Breathing in a River',answer:'water'},
+    {id:'d4',emoji:'🌿',label:'Plants Making Food (Photosynthesis)',answer:'air'},
+    {id:'d5',emoji:'🌧️',label:'Watering Crops',answer:'water'},
+    {id:'d6',emoji:'🦅',label:'Bird Riding Air Currents',answer:'air'},
+    {id:'d7',emoji:'🌱',label:'Roots Absorbing Water',answer:'water'},
+    {id:'d8',emoji:'💨',label:'Speaking and Singing',answer:'air'},
+  ],
+  dragYesLabel:'🌬️ Needs AIR for This',dragNoLabel:'💧 Needs WATER for This',dragYesEmoji:'🌬️',dragNoEmoji:'💧',
+  questions:[
+    {q:'Why do humans need to breathe air?',opts:['To stay warm at night','Air contains oxygen which keeps our brain and body working','Air makes us taller','To make our hair grow'],correct:1,right:'Yes! Air contains oxygen, and oxygen is what our brain and body cells need to work. Without it, we could not survive even a few minutes!',wrong:'Not quite! Air contains oxygen — which is what every cell in your brain and body needs to stay alive and working.'},
+    {q:'How do FISH get oxygen even though they live underwater?',opts:['They swim to the surface to breathe','They do not need oxygen','They get dissolved oxygen from the water through their gills','They breathe air through their fins'],correct:2,right:'Correct! Fish have gills that pull oxygen right out of the water. Even underwater, fish need oxygen to breathe!',wrong:'Good try! Fish use gills to pull oxygen out of the water — they do not need to come to the surface to breathe.'},
+    {q:'What gas do plants take in from the air to make their food?',opts:['Oxygen','Nitrogen','Carbon dioxide','Hydrogen'],correct:2,right:'Excellent! Plants take in carbon dioxide from the air. During photosynthesis, they use it along with water and sunlight to make their own food!',wrong:'Think again! Plants take in carbon dioxide from the air. They use it with water and sunlight to make food in photosynthesis.'},
+    {q:'What does a plant release into the air during photosynthesis?',opts:['Carbon dioxide','Nitrogen','Water vapour only','Oxygen'],correct:3,right:'Amazing! Plants release oxygen during photosynthesis — and that is the very oxygen that we and all animals breathe. Plants make our air!',wrong:'Good try! Plants release oxygen into the air during photosynthesis. That oxygen is what humans and animals need to breathe!'},
+    {q:'What would happen to plants if they had NO water?',opts:['They would grow faster','They would change colour to blue','They would wilt and eventually die','They would float away'],correct:2,right:'Perfect! Plants need water to carry goodness from the soil up to their leaves, and to make food. Without water, they wilt and die!',wrong:'Good try! Plants need water to carry goodness from the soil up to their leaves. Without water they wilt and die.'},
+  ]
+},
+
+};
+
+/* ════════════════════════════════════
+   BUILD LEARN
+════════════════════════════════════ */
+function buildLearn(e,id){
+  // Concept box
+  let html=`<div class="concept-box" style="background:linear-gradient(135deg,${e.accent},${lighten(e.accent)})">
+    <div class="bg-icon">💧</div>
+    <h2>${e.code}: ${e.title}</h2>
+    <span class="speakable" onclick="speakEl(this)">${e.conceptText}</span>
+  </div>`;
+
+  // Learn cards
+  e.learnCards.forEach(c=>{
+    html+=`<div class="card ${c.color}">
+      <div class="card-title" style="color:${c.accent}">${c.title}</div>
+      <button class="speak-all-btn" style="background:${c.accent}" onclick="speakAll(this)">🔊 Read All</button>
+      <div class="learn-body">`;
+    c.content.forEach(line=>{
+      html+=`<span class="speakable" onclick="speakEl(this)">${line}</span>`;
+    });
+    html+=`</div></div>`;
+  });
+
+  // Perspectives section (E1.1 specific)
+  if(e.perspItems){
+    html+=`<div class="card b-sky">
+      <div class="card-title" style="color:${e.accent}">👥 Different Perspectives</div>
+      <span class="speakable" onclick="speakEl(this)">Different people see air and water in different ways. All these views matter!</span>
+      <div class="persp-grid">`;
+    e.perspItems.forEach(p=>{
+      html+=`<div class="persp-card" style="border-color:${p.border};background:${p.color}" 
+        onclick="speakText('${p.title}. ${p.text.replace(/'/g,"\\'")}')">
+        <span class="pc-em">${p.emoji}</span>
+        <div class="pc-title" style="color:${p.titleColor}">${p.title}</div>
+        <div class="pc-text">${p.text}</div>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  }
+
+  // Action steps (E1.1 specific)
+  if(e.actionSteps){
+    html+=`<div class="card b-green">
+      <div class="card-title" style="color:#06D6A0">🌱 Our Plan to Help!</div>
+      <span class="speakable" onclick="speakEl(this)">Here are five things YOU can do to protect air and water in your community!</span>
+      <div class="action-list">`;
+    e.actionSteps.forEach((s,i)=>{
+      html+=`<div class="action-step" onclick="speakText('Step ${i+1}: ${s.text.replace(/'/g,"\\'")}')">
+        <div class="as-num">${i+1}</div>
+        <div class="as-text">${s.text}</div>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  }
+
+  // Fun fact
+  html+=`<div class="fun-fact">
+    <div class="ff-i">💡</div>
+    <p onclick="speakEl(this)">${e.funFact}</p>
+  </div>`;
+
+  // Think box
+  html+=`<div class="think-box">
+    <div class="card-title">🤔 Think About It!</div>
+    <span class="speakable" onclick="speakEl(this)">${e.thinkText}</span>
+  </div>`;
+
+  return html;
+}
+
+/* ════════════════════════════════════
+   BUILD ACTIVITY  (tap + mouse)
+════════════════════════════════════ */
+function buildActivity(e,id){
+  if(!e.dragItems||e.dragItems.length===0){
+    return `<div class="tab-section active"><div class="card b-sky"><div class="card-title" style="color:${e.accent}">🎮 Coming Soon!</div><p class="speakable" onclick="speakEl(this)">This activity is coming soon!</p></div></div>`;
+  }
+  if(!dragState[id]) dragState[id]={};
+  const placed=dragState[id];
+  const border=e.dragBorderColor||'#C4E8F5';
+  const bg=e.dragBg||'#EAF7FF';
+
+  const answerVals=[...new Set(e.dragItems.map(i=>i.answer))];
+  const zoneA=answerVals[0]||'good';
+  const zoneB=answerVals[1]||'bad';
+
+  // instruction changes based on input type
+  const isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+  const instrText=isTouch
+    ? 'Tap a card to select it 👆 — then tap a box to place it!'
+    : 'Click a card to select it — then click a box to place it!';
+
+  let bankItems='';
+  e.dragItems.forEach(item=>{
+    const isPlaced=!!placed[item.id];
+    bankItems+=`<div class="drag-item ${isPlaced?'placed':''}"
+      id="di-${item.id}"
+      style="border-color:${border}"
+      onclick="cardTap('${item.id}','${id}')">
+      ${item.emoji} ${item.label}
+    </div>`;
+  });
+
+  let aTags='',bTags='';
+  e.dragItems.forEach(item=>{
+    if(!placed[item.id]) return;
+    const ok=placed[item.id].ok;
+    const tag=`<div class="placed-tag" style="background:${ok?'#E8FFF4':'#FFE8EC'};border-color:${ok?'var(--green)':'var(--red)'}">
+      ${item.emoji} ${item.label} ${ok?'✅':'❌'}
+    </div>`;
+    if(placed[item.id].zone===zoneA) aTags+=tag;
+    else bTags+=tag;
+  });
+
+  let scoreHtml='';
+  if(Object.keys(placed).length===e.dragItems.length){
+    const sc=Object.values(dragState[id]).filter(a=>a.ok).length;
+    scoreHtml=`🎉 You got <strong>${sc} out of ${e.dragItems.length}</strong> correct! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great job!':'😊 Keep practising!'}`;
+  }
+
+  return `<div class="tab-section active">
+    <p class="drag-instr" id="act-instr-${id}" onclick="speakText(this.textContent.replace(/🔊/g,'').trim())">
+      ${instrText}
+    </p>
+    <div class="drag-ws">
+      <div class="drag-bank" style="border-color:${border};background:${bg}">
+        <h3 style="color:${e.accent}">🃏 Cards to Sort</h3>
+        ${bankItems}
+      </div>
+      <div class="drop-zones">
+        <div class="drop-zone tap-zone" id="dz-${zoneA}-${id}"
+          onclick="zoneTap('${zoneA}','${id}')">
+          <span class="dz-em">${e.dragYesEmoji}</span>
+          <div>
+            <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:#059669">${e.dragYesLabel}</div>
+            <div class="placed-wrap" id="pw-${zoneA}-${id}">${aTags}</div>
+          </div>
+        </div>
+        <div class="drop-zone tap-zone" id="dz-${zoneB}-${id}"
+          onclick="zoneTap('${zoneB}','${id}')">
+          <span class="dz-em">${e.dragNoEmoji}</span>
+          <div>
+            <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--red)">${e.dragNoLabel}</div>
+            <div class="placed-wrap" id="pw-${zoneB}-${id}">${bTags}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="drag-score">${scoreHtml}</div>
+    <button class="drag-reset-btn" style="background:${e.accent}" onclick="dreset('${id}')">🔄 Reset Activity</button>
+  </div>`;
+}
+
+/* ── TAP / CLICK SORT LOGIC ─────────────────────────────────────────── */
+// selectedCard = { itemId, expId } | null
+let selectedCard = null;
+
+function cardTap(itemId, expId) {
+  // If already placed, ignore
+  if(dragState[expId] && dragState[expId][itemId]) return;
+
+  if(selectedCard && selectedCard.itemId===itemId && selectedCard.expId===expId){
+    // Tapping the same card again deselects it
+    clearSelection();
+    return;
+  }
+  // Deselect previous
+  clearSelection();
+  // Select this card
+  selectedCard={itemId,expId};
+  const el=document.getElementById('di-'+itemId);
+  if(el){
+    el.classList.add('selected');
+    speakText(EX[expId].dragItems.find(i=>i.id===itemId)?.label||'');
+  }
+  // Highlight drop zones
+  document.querySelectorAll('.tap-zone').forEach(z=>z.classList.add('ready'));
+}
+
+function zoneTap(zone, expId){
+  if(!selectedCard || selectedCard.expId!==expId){ return; }
+  const {itemId}=selectedCard;
+  clearSelection();
+  placeItem(itemId, zone, expId);
+}
+
+function clearSelection(){
+  if(selectedCard){
+    const el=document.getElementById('di-'+selectedCard.itemId);
+    if(el) el.classList.remove('selected');
+  }
+  document.querySelectorAll('.tap-zone').forEach(z=>z.classList.remove('ready'));
+  selectedCard=null;
+}
+
+function placeItem(itemId, zone, expId){
+  const e=EX[expId];
+  const item=e.dragItems.find(i=>i.id===itemId);
+  if(!item)return;
+  const ok=item.answer===zone;
+  if(!dragState[expId]) dragState[expId]={};
+  dragState[expId][itemId]={zone,ok};
+
+  const el=document.getElementById('di-'+itemId);
+  if(el) el.classList.add('placed');
+
+  const pw=document.getElementById('pw-'+zone+'-'+expId);
+  if(pw){
+    const t=document.createElement('div');
+    t.className='placed-tag';
+    t.style.background=ok?'#E8FFF4':'#FFE8EC';
+    t.style.borderColor=ok?'var(--green)':'var(--red)';
+    t.innerHTML=`${item.emoji} ${item.label} ${ok?'✅':'❌'}`;
+    pw.appendChild(t);
+  }
+
+  if(Object.keys(dragState[expId]).length===e.dragItems.length){
+    const sc=Object.values(dragState[expId]).filter(a=>a.ok).length;
+    const scoreEl=document.getElementById('drag-score');
+    if(scoreEl) scoreEl.innerHTML=`🎉 You got <strong>${sc} out of ${e.dragItems.length}</strong> correct! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great job!':'😊 Keep practising!'}`;
+    speakText(`You finished! You got ${sc} out of ${e.dragItems.length} correct!`);
+  }
+}
+
+function dreset(id){dragState[id]={};selectedCard=null;render(id,'activity');}
+
+/* ════════════════════════════════════
+   BUILD QUIZ
+════════════════════════════════════ */
+function buildQuizShell(e){
+  return `<div class="tab-section active">
+    <div class="quiz-topbar">
+      <h2 style="color:${e.accent}">🧠 Quiz Time!</h2>
+      <span class="quiz-prog" id="quiz-prog">Question 1 of 5</span>
+    </div>
+    <div id="quiz-card-area"></div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="quiz-score-big" id="quiz-score-num" style="color:${e.accent}"></div>
+      <span class="stars" id="quiz-stars"></span>
+      <h3 id="quiz-result-msg"></h3>
+      <p id="quiz-result-sub"></p>
+      <button class="quiz-retry-btn" style="background:${e.accent}" onclick="retryQuiz()">🔄 Try Again!</button>
+    </div>
+  </div>`;
+}
+function renderQ(e){
+  const q=quizState.q;
+  if(q>=e.questions.length){showResult(e);return;}
+  document.getElementById('quiz-prog').textContent=`Question ${q+1} of ${e.questions.length}`;
+  const qd=e.questions[q];
+  const L=['A','B','C','D'];
+  const opts=qd.opts.map((o,i)=>`
+    <button class="q-opt" onclick="answerQ(${i})" onmouseenter="hss(this)" onmouseleave="hse()">
+      <span class="opt-l">${L[i]}</span><span>${o}</span>
+    </button>`).join('');
+  document.getElementById('quiz-card-area').innerHTML=`
+    <div class="quiz-card" style="border-top:6px solid ${e.accent}">
+      <span class="quiz-q-text" onclick="speakEl(this)" onmouseenter="hss(this)" onmouseleave="hse()">${qd.q}</span>
+      <div class="quiz-options">${opts}</div>
+      <div class="quiz-feedback" id="q-feedback"></div>
+      <div class="quiz-nav">
+        <button class="quiz-next-btn" id="quiz-next" style="background:${e.accent}" onclick="nextQ()" disabled>
+          ${q===e.questions.length-1?'🏁 See Results':'Next ➡️'}
+        </button>
+      </div>
+    </div>`;
+}
+function answerQ(idx){
+  const e=EX[activeId];
+  if(quizState.answered[quizState.q])return;
+  quizState.answered[quizState.q]=true;
+  const qd=e.questions[quizState.q];
+  const ok=idx===qd.correct;
+  if(ok) quizState.score++;
+  document.querySelectorAll('.q-opt').forEach((b,i)=>{
+    b.classList.add('disabled');
+    if(i===qd.correct) b.classList.add('correct');
+    else if(i===idx&&!ok) b.classList.add('wrong');
+  });
+  const fb=document.getElementById('q-feedback');
+  fb.className='quiz-feedback show '+(ok?'correct':'wrong');
+  fb.textContent=ok?'✅ '+qd.right:'❌ '+qd.wrong;
+  speakText(ok?qd.right:qd.wrong);
+  document.getElementById('quiz-next').disabled=false;
+}
+function nextQ(){quizState.q++;renderQ(EX[activeId]);}
+function showResult(e){
+  document.getElementById('quiz-card-area').style.display='none';
+  const res=document.getElementById('quiz-result');
+  res.classList.add('show');
+  const pct=quizState.score/e.questions.length;
+  let msg,sub,stars;
+  if(pct===1){msg='Perfect Score! 🏆';sub='You are an Air and Water EXPERT!';stars='⭐⭐⭐⭐⭐';}
+  else if(pct>=.8){msg='Amazing Work! 🌟';sub='You know so much about protecting our environment!';stars='⭐⭐⭐⭐';}
+  else if(pct>=.6){msg='Good Job! 👏';sub='Review the Learn tab and try again!';stars='⭐⭐⭐';}
+  else{msg='Keep Trying! 💪';sub='Read the Learn section again — you can do it!';stars='⭐⭐';}
+  document.getElementById('quiz-score-num').textContent=quizState.score+'/5';
+  document.getElementById('quiz-result-msg').textContent=msg;
+  document.getElementById('quiz-result-sub').textContent=sub;
+  document.getElementById('quiz-stars').textContent=stars;
+  speakText('You finished! You got '+quizState.score+' out of 5. '+msg);
+}
+function retryQuiz(){
+  quizState={q:0,score:0,answered:[]};
+  document.getElementById('quiz-card-area').style.display='';
+  document.getElementById('quiz-result').classList.remove('show');
+  renderQ(EX[activeId]);
+}
+
+/* COLOUR UTILS */
+function lighten(hex){
+  const r=Math.min(255,parseInt(hex.slice(1,3),16)+55);
+  const g=Math.min(255,parseInt(hex.slice(3,5),16)+55);
+  const b=Math.min(255,parseInt(hex.slice(5,7),16)+55);
+  return '#'+[r,g,b].map(n=>n.toString(16).padStart(2,'0')).join('');
+}
+
+/* TAB ACTIVE COLOUR */
+const sEl=document.createElement('style');
+sEl.textContent='.tab-btn.active{color:var(--tab-accent,#06A6D4);border-bottom-color:var(--tab-accent,#06A6D4);}';
+document.head.appendChild(sEl);
+</script>
+</body>
+</html>
