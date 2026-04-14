@@ -853,7 +853,7 @@ function buildLearn(e,id){
 }
 
 /* ════════════════════════════════════
-   BUILD ACTIVITY  (tap + mouse)
+   BUILD ACTIVITY  (click / tap)
 ════════════════════════════════════ */
 function buildActivity(e,id){
   if(!e.dragItems||e.dragItems.length===0){
@@ -868,19 +868,14 @@ function buildActivity(e,id){
   const zoneA=answerVals[0]||'good';
   const zoneB=answerVals[1]||'bad';
 
-  // instruction changes based on input type
-  const isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0;
-  const instrText=isTouch
-    ? 'Tap a card to select it 👆 — then tap a box to place it!'
-    : 'Click a card to select it — then click a box to place it!';
-
   let bankItems='';
   e.dragItems.forEach(item=>{
     const isPlaced=!!placed[item.id];
     bankItems+=`<div class="drag-item ${isPlaced?'placed':''}"
-      id="di-${item.id}"
+      id="di-${id}-${item.id}"
+      data-item="${item.id}" data-exp="${id}"
       style="border-color:${border}"
-      onclick="cardTap('${item.id}','${id}')">
+      onclick="cardTap(this)">
       ${item.emoji} ${item.label}
     </div>`;
   });
@@ -903,8 +898,8 @@ function buildActivity(e,id){
   }
 
   return `<div class="tab-section active">
-    <p class="drag-instr" id="act-instr-${id}" onclick="speakText(this.textContent.replace(/🔊/g,'').trim())">
-      ${instrText}
+    <p class="drag-instr" onclick="speakText(this.textContent.replace(/🔊/g,'').trim())">
+      Click a card to select it ✅ — then click a box to place it!
     </p>
     <div class="drag-ws">
       <div class="drag-bank" style="border-color:${border};background:${bg}">
@@ -912,101 +907,110 @@ function buildActivity(e,id){
         ${bankItems}
       </div>
       <div class="drop-zones">
-        <div class="drop-zone tap-zone" id="dz-${zoneA}-${id}"
-          onclick="zoneTap('${zoneA}','${id}')">
-          <span class="dz-em">${e.dragYesEmoji}</span>
-          <div>
+        <div class="drop-zone tap-zone" id="dz-${id}-${zoneA}"
+          data-zone="${zoneA}" data-exp="${id}"
+          onclick="zoneTap(this)">
+          <span class="dz-em" style="pointer-events:none">${e.dragYesEmoji}</span>
+          <div style="pointer-events:none">
             <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:#059669">${e.dragYesLabel}</div>
-            <div class="placed-wrap" id="pw-${zoneA}-${id}">${aTags}</div>
+            <div class="placed-wrap" id="pw-${id}-${zoneA}">${aTags}</div>
           </div>
         </div>
-        <div class="drop-zone tap-zone" id="dz-${zoneB}-${id}"
-          onclick="zoneTap('${zoneB}','${id}')">
-          <span class="dz-em">${e.dragNoEmoji}</span>
-          <div>
+        <div class="drop-zone tap-zone" id="dz-${id}-${zoneB}"
+          data-zone="${zoneB}" data-exp="${id}"
+          onclick="zoneTap(this)">
+          <span class="dz-em" style="pointer-events:none">${e.dragNoEmoji}</span>
+          <div style="pointer-events:none">
             <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--red)">${e.dragNoLabel}</div>
-            <div class="placed-wrap" id="pw-${zoneB}-${id}">${bTags}</div>
+            <div class="placed-wrap" id="pw-${id}-${zoneB}">${bTags}</div>
           </div>
         </div>
       </div>
     </div>
-    <div id="drag-score">${scoreHtml}</div>
+    <div id="drag-score-${id}">${scoreHtml}</div>
     <button class="drag-reset-btn" style="background:${e.accent}" onclick="dreset('${id}')">🔄 Reset Activity</button>
   </div>`;
 }
 
-/* ── TAP / CLICK SORT LOGIC ─────────────────────────────────────────── */
-// selectedCard = { itemId, expId } | null
-let selectedCard = null;
+/* ── CLICK / TAP SORT LOGIC ─────────────────────────────────────────── */
+let selectedCard = null;  // { itemId, expId, el }
 
-function cardTap(itemId, expId) {
-  // If already placed, ignore
+function cardTap(el) {
+  const itemId = el.dataset.item;
+  const expId  = el.dataset.exp;
+
+  // Already placed — ignore
   if(dragState[expId] && dragState[expId][itemId]) return;
 
+  // Clicking the already-selected card deselects it
   if(selectedCard && selectedCard.itemId===itemId && selectedCard.expId===expId){
-    // Tapping the same card again deselects it
     clearSelection();
     return;
   }
-  // Deselect previous
+
   clearSelection();
-  // Select this card
-  selectedCard={itemId,expId};
-  const el=document.getElementById('di-'+itemId);
-  if(el){
-    el.classList.add('selected');
-    speakText(EX[expId].dragItems.find(i=>i.id===itemId)?.label||'');
-  }
-  // Highlight drop zones
-  document.querySelectorAll('.tap-zone').forEach(z=>z.classList.add('ready'));
+
+  selectedCard = { itemId, expId, el };
+  el.classList.add('selected');
+  speakText(EX[expId].dragItems.find(i=>i.id===itemId)?.label || '');
+
+  // Highlight the two drop zones for this unit
+  document.querySelectorAll(`.tap-zone[data-exp="${expId}"]`).forEach(z=>z.classList.add('ready'));
 }
 
-function zoneTap(zone, expId){
-  if(!selectedCard || selectedCard.expId!==expId){ return; }
-  const {itemId}=selectedCard;
+function zoneTap(el) {
+  if(!selectedCard) return;
+  const zone   = el.dataset.zone;
+  const expId  = el.dataset.exp;
+  if(selectedCard.expId !== expId) return;
+
+  const itemId = selectedCard.itemId;
   clearSelection();
   placeItem(itemId, zone, expId);
 }
 
 function clearSelection(){
   if(selectedCard){
-    const el=document.getElementById('di-'+selectedCard.itemId);
-    if(el) el.classList.remove('selected');
+    selectedCard.el.classList.remove('selected');
   }
   document.querySelectorAll('.tap-zone').forEach(z=>z.classList.remove('ready'));
-  selectedCard=null;
+  selectedCard = null;
 }
 
 function placeItem(itemId, zone, expId){
-  const e=EX[expId];
-  const item=e.dragItems.find(i=>i.id===itemId);
-  if(!item)return;
-  const ok=item.answer===zone;
+  const e    = EX[expId];
+  const item = e.dragItems.find(i=>i.id===itemId);
+  if(!item) return;
+
+  const ok = (item.answer === zone);
   if(!dragState[expId]) dragState[expId]={};
-  dragState[expId][itemId]={zone,ok};
+  dragState[expId][itemId] = { zone, ok };
 
-  const el=document.getElementById('di-'+itemId);
-  if(el) el.classList.add('placed');
+  // Grey out the card in the bank
+  const cardEl = document.getElementById(`di-${expId}-${itemId}`);
+  if(cardEl) cardEl.classList.add('placed');
 
-  const pw=document.getElementById('pw-'+zone+'-'+expId);
+  // Add result tag to the drop zone
+  const pw = document.getElementById(`pw-${expId}-${zone}`);
   if(pw){
-    const t=document.createElement('div');
-    t.className='placed-tag';
-    t.style.background=ok?'#E8FFF4':'#FFE8EC';
-    t.style.borderColor=ok?'var(--green)':'var(--red)';
-    t.innerHTML=`${item.emoji} ${item.label} ${ok?'✅':'❌'}`;
+    const t = document.createElement('div');
+    t.className = 'placed-tag';
+    t.style.background   = ok ? '#E8FFF4' : '#FFE8EC';
+    t.style.borderColor  = ok ? 'var(--green)' : 'var(--red)';
+    t.innerHTML = `${item.emoji} ${item.label} ${ok?'✅':'❌'}`;
     pw.appendChild(t);
   }
 
-  if(Object.keys(dragState[expId]).length===e.dragItems.length){
-    const sc=Object.values(dragState[expId]).filter(a=>a.ok).length;
-    const scoreEl=document.getElementById('drag-score');
-    if(scoreEl) scoreEl.innerHTML=`🎉 You got <strong>${sc} out of ${e.dragItems.length}</strong> correct! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great job!':'😊 Keep practising!'}`;
+  // Show score when all cards placed
+  if(Object.keys(dragState[expId]).length === e.dragItems.length){
+    const sc = Object.values(dragState[expId]).filter(a=>a.ok).length;
+    const scoreEl = document.getElementById(`drag-score-${expId}`);
+    if(scoreEl) scoreEl.innerHTML = `🎉 You got <strong>${sc} out of ${e.dragItems.length}</strong> correct! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great job!':'😊 Keep practising!'}`;
     speakText(`You finished! You got ${sc} out of ${e.dragItems.length} correct!`);
   }
 }
 
-function dreset(id){dragState[id]={};selectedCard=null;render(id,'activity');}
+function dreset(id){ dragState[id]={}; selectedCard=null; render(id,'activity'); }
 
 /* ════════════════════════════════════
    BUILD QUIZ
