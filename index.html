@@ -135,11 +135,14 @@ body{font-family:'Nunito',sans-serif;min-height:100vh;background:linear-gradient
 .drag-bank{border:3px dashed;border-radius:16px;padding:14px;min-height:190px;}
 .drag-bank h3{font-family:'Fredoka One',cursive;font-size:1rem;margin-bottom:10px;}
 .drop-zones{display:flex;flex-direction:column;gap:12px;}
-.drop-zone{background:white;border:3px dashed #ccc;border-radius:14px;padding:12px 14px;min-height:60px;display:flex;align-items:flex-start;gap:10px;transition:all .2s;font-weight:700;}
+.drop-zone{background:white;border:3px dashed #ccc;border-radius:14px;padding:12px 14px;min-height:60px;display:flex;align-items:flex-start;gap:10px;transition:all .2s;font-weight:700;cursor:pointer;}
+.drop-zone *{pointer-events:none;}
 .drop-zone.over{border-color:var(--green);background:#f0fff8;transform:scale(1.02);}
+.drop-zone.ready{border-color:var(--sky);background:#EAF7FF;transform:scale(1.01);}
 .drop-zone .dz-em{font-size:1.5rem;flex-shrink:0;margin-top:2px;}
 .placed-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
 .drag-item{background:white;border:3px solid;border-radius:12px;padding:8px 12px;margin-bottom:8px;cursor:pointer;font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:7px;transition:all .2s;user-select:none;}
+.drag-item *{pointer-events:none;}
 .drag-item:hover{transform:scale(1.03);}
 .drag-item.placed{opacity:.35;pointer-events:none;}
 .drag-item.selected{transform:scale(1.06);box-shadow:0 0 0 3px #FFD166,0 6px 18px rgba(0,0,0,.2);background:#FFFBEA;}
@@ -399,7 +402,7 @@ e11:{
     {id:'d7',emoji:'🛢️',label:'Oil Spill in a Lake',answer:'bad'},
     {id:'d8',emoji:'🚶',label:'Walking to School',answer:'good'},
   ],
-  dragYesLabel:'✅ Helps Protect Air & Water',dragNoLabel:'❌ Harms Air & Water',dragYesEmoji:'✅',dragNoEmoji:'❌',
+  dragYesAnswer:'good',dragNoAnswer:'bad',dragYesLabel:'✅ Helps Protect Air & Water',dragNoLabel:'❌ Harms Air & Water',dragYesEmoji:'✅',dragNoEmoji:'❌',
   questions:[
     {q:'What do cars and trucks put into the air?',opts:['Clean water','Smoke and air pollution','Sunlight','Fresh air'],correct:1,right:'Yes! Cars and trucks burn fuel and make smoke. That smoke is called air pollution!',wrong:'Not quite! Cars and trucks make smoke when they burn fuel. That is called air pollution.'},
     {q:'How can dirty water from roads get into rivers?',opts:['It falls up into the sky','It freezes into ice cubes','When it rains, dirty water flows from roads into rivers and lakes','Rivers make their own dirt'],correct:2,right:'Correct! When it rains, dirty water washes off roads and flows right into rivers and lakes!',wrong:'Good try! When it rains, dirty water on roads flows downhill into rivers and lakes.'},
@@ -543,16 +546,16 @@ e21:{
   funFact:'Fun Fact! Water is one of the only substances on Earth that gets LESS dense when it freezes. Ice floats on water because solid ice is lighter than liquid water. If ice sank, lakes would freeze solid from the bottom up — and fish could not survive! 🐟🧊',
   thinkText:'Fill a plastic bag with air and tie it shut. Then fill another bag with water. Hold one in each hand. What do you notice? How are they the same? How are they different?',
   dragItems:[
-    {id:'d1',emoji:'💨',label:'Has No Colour',answer:'good'},
-    {id:'d2',emoji:'🎈',label:'Can Be Compressed',answer:'good'},
-    {id:'d3',emoji:'💨',label:'Moving Form is Called Wind',answer:'good'},
-    {id:'d4',emoji:'🌬️',label:'Fills a Balloon',answer:'good'},
-    {id:'d5',emoji:'💧',label:'Has Surface Tension',answer:'bad'},
-    {id:'d6',emoji:'🫧',label:'Can Dissolve Sugar',answer:'bad'},
-    {id:'d7',emoji:'💧',label:'Flows into a Container',answer:'bad'},
-    {id:'d8',emoji:'⚖️',label:'Weighs 1 kg per Litre',answer:'bad'},
+    {id:'d1',emoji:'💨',label:'Has No Colour',answer:'air'},
+    {id:'d2',emoji:'🎈',label:'Can Be Compressed',answer:'air'},
+    {id:'d3',emoji:'💨',label:'Moving Form is Called Wind',answer:'air'},
+    {id:'d4',emoji:'🌬️',label:'Fills a Balloon',answer:'air'},
+    {id:'d5',emoji:'💧',label:'Has Surface Tension',answer:'water'},
+    {id:'d6',emoji:'🫧',label:'Can Dissolve Sugar',answer:'water'},
+    {id:'d7',emoji:'💧',label:'Flows into a Container',answer:'water'},
+    {id:'d8',emoji:'⚖️',label:'Weighs 1 kg per Litre',answer:'water'},
   ],
-  dragYesLabel:'🌬️ Property of AIR',dragNoLabel:'💧 Property of WATER',dragYesEmoji:'🌬️',dragNoEmoji:'💧',
+  dragYesAnswer:'air',dragNoAnswer:'water',dragYesLabel:'🌬️ Property of AIR',dragNoLabel:'💧 Property of WATER',dragYesEmoji:'🌬️',dragNoEmoji:'💧',
   questions:[
     {q:'Which of these is a key property of clean air?',opts:['It is blue and smells like flowers','It has no colour and no smell','It is always warm','It is heavier than water'],correct:1,right:'Yes! Clean air has no colour and no smell. If you can see or smell something in the air, that is usually a sign of pollution!',wrong:'Not quite! Clean air has no colour and no smell. Coloured or smelly air usually means there is pollution.'},
     {q:'What is it called when air is moving?',opts:['Rain','Pressure','Wind','Condensation'],correct:2,right:'Correct! Moving air is called wind. Wind can move leaves, push sails, and even power wind turbines to make electricity!',wrong:'Good try! Moving air is called wind. It can push things, move clouds, and power wind turbines.'},
@@ -853,164 +856,239 @@ function buildLearn(e,id){
 }
 
 /* ════════════════════════════════════
-   BUILD ACTIVITY  (click / tap)
+   BUILD ACTIVITY
 ════════════════════════════════════ */
 function buildActivity(e,id){
   if(!e.dragItems||e.dragItems.length===0){
-    return `<div class="tab-section active"><div class="card b-sky"><div class="card-title" style="color:${e.accent}">🎮 Coming Soon!</div><p class="speakable" onclick="speakEl(this)">This activity is coming soon!</p></div></div>`;
+    return `<div class="tab-section active"><div class="card b-sky"><div class="card-title" style="color:${e.accent}">🎮 Coming Soon!</div><p>This activity is coming soon!</p></div></div>`;
   }
-  if(!dragState[id]) dragState[id]={};
-  const placed=dragState[id];
-  const border=e.dragBorderColor||'#C4E8F5';
-  const bg=e.dragBg||'#EAF7FF';
 
-  const answerVals=[...new Set(e.dragItems.map(i=>i.answer))];
-  const zoneA=answerVals[0]||'good';
-  const zoneB=answerVals[1]||'bad';
+  if(!dragState[id]) dragState[id]={};
+  const placed = dragState[id];
+  const border = e.dragBorderColor||'#C4E8F5';
+  const bg     = e.dragBg||'#EAF7FF';
+  const answerVals = [...new Set(e.dragItems.map(i=>i.answer))];
+  const zoneA = e.dragYesAnswer || answerVals.find(v=>v==='good'||v==='natural'||v==='fresh'||v==='solid'||v==='air') || answerVals[0] || 'good';
+  const zoneB = e.dragNoAnswer  || answerVals.find(v=>v!==zoneA) || answerVals[1] || 'bad';
 
   let bankItems='';
   e.dragItems.forEach(item=>{
-    const isPlaced=!!placed[item.id];
-    bankItems+=`<div class="drag-item ${isPlaced?'placed':''}"
+    const isPlaced = !!placed[item.id];
+    bankItems += `<div
       id="di-${id}-${item.id}"
-      data-item="${item.id}" data-exp="${id}"
-      style="border-color:${border}"
-      onclick="cardTap(this)">
-      ${item.emoji} ${item.label}
-    </div>`;
+      class="act-drag-item"
+      draggable="${isPlaced?'false':'true'}"
+      data-exp="${id}"
+      data-item="${item.id}"
+      onclick="window._actTap('${id}','${item.id}')"
+      ondragstart="window._actDragStart(event,'${id}','${item.id}')"
+      ondragend="window._actDragEnd(event)"
+      style="display:flex;align-items:center;gap:8px;border:3px solid ${border};border-radius:12px;padding:10px 14px;margin-bottom:8px;cursor:${isPlaced?'default':'grab'};font-weight:700;font-size:.9rem;background:white;font-family:'Nunito',sans-serif;transition:all .2s;user-select:none;${isPlaced?'opacity:.35;pointer-events:none;':''}"
+    ><span style="font-size:1.3rem;pointer-events:none;">${item.emoji}</span><span style="pointer-events:none;">${item.label}</span></div>`;
   });
 
-  let aTags='',bTags='';
+  let aTags='', bTags='';
   e.dragItems.forEach(item=>{
     if(!placed[item.id]) return;
-    const ok=placed[item.id].ok;
-    const tag=`<div class="placed-tag" style="background:${ok?'#E8FFF4':'#FFE8EC'};border-color:${ok?'var(--green)':'var(--red)'}">
-      ${item.emoji} ${item.label} ${ok?'✅':'❌'}
-    </div>`;
-    if(placed[item.id].zone===zoneA) aTags+=tag;
-    else bTags+=tag;
+    const ok = placed[item.id].ok;
+    const tag = `<span style="display:inline-flex;align-items:center;gap:4px;background:${ok?'#E8FFF4':'#FFE8EC'};border:2px solid ${ok?'#06D6A0':'#EF233C'};border-radius:10px;padding:4px 10px;font-size:.82rem;font-weight:700;margin:3px;animation:popIn .3s ease;">${item.emoji} ${item.label} ${ok?'✅':'❌'}</span>`;
+    if(placed[item.id].zone===zoneA) aTags+=tag; else bTags+=tag;
   });
 
-  let scoreHtml='';
-  if(Object.keys(placed).length===e.dragItems.length){
-    const sc=Object.values(dragState[id]).filter(a=>a.ok).length;
-    scoreHtml=`🎉 You got <strong>${sc} out of ${e.dragItems.length}</strong> correct! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great job!':'😊 Keep practising!'}`;
-  }
+  const total = Object.keys(placed).length;
+  const sc = Object.values(placed).filter(a=>a.ok).length;
+  const scoreHtml = total===e.dragItems.length
+    ? `🎉 You got <strong>${sc}/${e.dragItems.length}</strong>! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great!':'😊 Keep going!'}`
+    : '';
 
   return `<div class="tab-section active">
-    <p class="drag-instr" onclick="speakText(this.textContent.replace(/🔊/g,'').trim())">
-      Click a card to select it ✅ — then click a box to place it!
-    </p>
+    <p style="text-align:center;font-weight:700;color:#555;margin-bottom:16px;font-size:1rem;">🖱️ Drag a card to a box — or tap it, then tap a box!</p>
     <div class="drag-ws">
-      <div class="drag-bank" style="border-color:${border};background:${bg}">
-        <h3 style="color:${e.accent}">🃏 Cards to Sort</h3>
+      <div id="bank-${id}" style="border:3px dashed ${border};border-radius:16px;padding:14px;background:${bg};">
+        <h3 style="font-family:'Fredoka One',cursive;font-size:1rem;margin-bottom:10px;color:${e.accent}">🃏 Cards to Sort</h3>
         ${bankItems}
       </div>
       <div class="drop-zones">
-        <div class="drop-zone tap-zone" id="dz-${id}-${zoneA}"
-          data-zone="${zoneA}" data-exp="${id}"
-          onclick="zoneTap(this)">
-          <span class="dz-em" style="pointer-events:none">${e.dragYesEmoji}</span>
-          <div style="pointer-events:none">
-            <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:#059669">${e.dragYesLabel}</div>
-            <div class="placed-wrap" id="pw-${id}-${zoneA}">${aTags}</div>
-          </div>
+        <div id="dz-${id}-${zoneA}"
+          class="act-drop-zone"
+          data-exp="${id}" data-zone="${zoneA}"
+          onclick="window._actZone('${id}','${zoneA}')"
+          ondragover="window._actDragOver(event,'${id}','${zoneA}')"
+          ondragleave="window._actDragLeave(event,'${id}','${zoneA}')"
+          ondrop="window._actDrop(event,'${id}','${zoneA}')"
+          style="border:3px dashed #ccc;border-radius:14px;padding:14px;background:white;min-height:90px;transition:all .2s;margin-bottom:12px;cursor:pointer;">
+          <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:#059669;margin-bottom:6px;pointer-events:none;">${e.dragYesEmoji} ${e.dragYesLabel}</div>
+          <div id="pw-${id}-${zoneA}" style="display:flex;flex-wrap:wrap;pointer-events:none;">${aTags}</div>
         </div>
-        <div class="drop-zone tap-zone" id="dz-${id}-${zoneB}"
-          data-zone="${zoneB}" data-exp="${id}"
-          onclick="zoneTap(this)">
-          <span class="dz-em" style="pointer-events:none">${e.dragNoEmoji}</span>
-          <div style="pointer-events:none">
-            <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--red)">${e.dragNoLabel}</div>
-            <div class="placed-wrap" id="pw-${id}-${zoneB}">${bTags}</div>
-          </div>
+        <div id="dz-${id}-${zoneB}"
+          class="act-drop-zone"
+          data-exp="${id}" data-zone="${zoneB}"
+          onclick="window._actZone('${id}','${zoneB}')"
+          ondragover="window._actDragOver(event,'${id}','${zoneB}')"
+          ondragleave="window._actDragLeave(event,'${id}','${zoneB}')"
+          ondrop="window._actDrop(event,'${id}','${zoneB}')"
+          style="border:3px dashed #ccc;border-radius:14px;padding:14px;background:white;min-height:90px;transition:all .2s;cursor:pointer;">
+          <div style="font-family:'Fredoka One',cursive;font-size:.95rem;color:#EF233C;margin-bottom:6px;pointer-events:none;">${e.dragNoEmoji} ${e.dragNoLabel}</div>
+          <div id="pw-${id}-${zoneB}" style="display:flex;flex-wrap:wrap;pointer-events:none;">${bTags}</div>
         </div>
       </div>
     </div>
-    <div id="drag-score-${id}">${scoreHtml}</div>
-    <button class="drag-reset-btn" style="background:${e.accent}" onclick="dreset('${id}')">🔄 Reset Activity</button>
+    <div id="drag-score-${id}" style="text-align:center;font-family:'Fredoka One',cursive;font-size:1.15rem;color:#06D6A0;margin-top:12px;">${scoreHtml}</div>
+    <button type="button" onclick="window._actReset('${id}')" style="display:block;margin:12px auto 0;background:${e.accent};color:white;border:none;border-radius:12px;padding:9px 20px;font-family:'Fredoka One',cursive;font-size:.95rem;cursor:pointer;">🔄 Reset</button>
   </div>`;
 }
 
-/* ── CLICK / TAP SORT LOGIC ─────────────────────────────────────────── */
-let selectedCard = null;  // { itemId, expId, el }
+/* ── Activity logic ───────────────────────────────────────────────── */
+var _sel = null;
+var _dragging = null; // tracks item being HTML5-dragged
 
-function cardTap(el) {
-  const itemId = el.dataset.item;
-  const expId  = el.dataset.exp;
-
-  // Already placed — ignore
+/* ── TAP / CLICK fallback ──────────────────────────────────────── */
+window._actTap = function(expId, itemId){
+  if(_dragging) return; // ignore tap fired at end of real drag
   if(dragState[expId] && dragState[expId][itemId]) return;
-
-  // Clicking the already-selected card deselects it
-  if(selectedCard && selectedCard.itemId===itemId && selectedCard.expId===expId){
-    clearSelection();
-    return;
+  var btn = document.getElementById('di-'+expId+'-'+itemId);
+  if(!btn) return;
+  if(_sel && _sel.expId===expId && _sel.itemId===itemId){
+    // deselect
+    btn.style.outline=''; btn.style.background='white'; _sel=null;
+    _actClearZones(expId); return;
   }
-
-  clearSelection();
-
-  selectedCard = { itemId, expId, el };
-  el.classList.add('selected');
-  speakText(EX[expId].dragItems.find(i=>i.id===itemId)?.label || '');
-
-  // Highlight the two drop zones for this unit
-  document.querySelectorAll(`.tap-zone[data-exp="${expId}"]`).forEach(z=>z.classList.add('ready'));
-}
-
-function zoneTap(el) {
-  if(!selectedCard) return;
-  const zone   = el.dataset.zone;
-  const expId  = el.dataset.exp;
-  if(selectedCard.expId !== expId) return;
-
-  const itemId = selectedCard.itemId;
-  clearSelection();
-  placeItem(itemId, zone, expId);
-}
-
-function clearSelection(){
-  if(selectedCard){
-    selectedCard.el.classList.remove('selected');
+  // clear any previous selection
+  if(_sel){
+    var old=document.getElementById('di-'+_sel.expId+'-'+_sel.itemId);
+    if(old){old.style.outline='';old.style.background='white';}
+    _actClearZones(_sel.expId);
   }
-  document.querySelectorAll('.tap-zone').forEach(z=>z.classList.remove('ready'));
-  selectedCard = null;
-}
+  _sel={expId:expId,itemId:itemId};
+  btn.style.outline='3px solid #FFD166';
+  btn.style.background='#FFFBEA';
+  var e=EX[expId];
+  var av=[...new Set(e.dragItems.map(function(i){return i.answer;}))];
+  [av[0],av[1]].forEach(function(z){
+    var el=document.getElementById('dz-'+expId+'-'+z);
+    if(el){ el.style.borderColor=e.accent; el.style.background='rgba(255,209,0,.07)'; }
+  });
+  var lbl=(e.dragItems.find(function(i){return i.id===itemId;})||{label:''}).label;
+  speakText(lbl);
+};
 
-function placeItem(itemId, zone, expId){
-  const e    = EX[expId];
-  const item = e.dragItems.find(i=>i.id===itemId);
+window._actZone = function(expId, zone){
+  if(!_sel||_sel.expId!==expId) return;
+  _actPlaceItem(expId, _sel.itemId, zone);
+  _actClearZones(expId);
+  _sel=null;
+};
+
+/* ── HTML5 DRAG HANDLERS ──────────────────────────────────────── */
+window._actDragStart = function(ev, expId, itemId){
+  if(dragState[expId] && dragState[expId][itemId]){ ev.preventDefault(); return; }
+  _dragging = {expId:expId, itemId:itemId};
+  // clear tap selection
+  if(_sel){
+    var old=document.getElementById('di-'+_sel.expId+'-'+_sel.itemId);
+    if(old){old.style.outline='';old.style.background='white';}
+    _actClearZones(_sel.expId);
+    _sel=null;
+  }
+  ev.dataTransfer.effectAllowed='move';
+  ev.dataTransfer.setData('text/plain', expId+'|'+itemId);
+  // slight visual fade on the dragged item
+  setTimeout(function(){
+    var el=document.getElementById('di-'+expId+'-'+itemId);
+    if(el) el.style.opacity='.45';
+  },0);
+  // highlight drop zones
+  var e=EX[expId];
+  var av=[...new Set(e.dragItems.map(function(i){return i.answer;}))];
+  [av[0],av[1]].forEach(function(z){
+    var el=document.getElementById('dz-'+expId+'-'+z);
+    if(el){ el.style.borderColor=e.accent; el.style.background='rgba(255,209,0,.07)'; }
+  });
+};
+
+window._actDragEnd = function(ev){
+  if(_dragging){
+    var el=document.getElementById('di-'+_dragging.expId+'-'+_dragging.itemId);
+    if(el && !(dragState[_dragging.expId]&&dragState[_dragging.expId][_dragging.itemId])){
+      el.style.opacity='1';
+    }
+    _actClearZones(_dragging.expId);
+  }
+  setTimeout(function(){ _dragging=null; }, 50);
+};
+
+window._actDragOver = function(ev, expId, zone){
+  ev.preventDefault();
+  ev.dataTransfer.dropEffect='move';
+  var el=document.getElementById('dz-'+expId+'-'+zone);
+  if(el){ el.style.transform='scale(1.02)'; el.style.background='#f0fff8'; el.style.borderStyle='solid'; }
+};
+
+window._actDragLeave = function(ev, expId, zone){
+  var el=document.getElementById('dz-'+expId+'-'+zone);
+  if(el){ el.style.transform=''; el.style.background='white'; el.style.borderStyle='dashed'; }
+};
+
+window._actDrop = function(ev, expId, zone){
+  ev.preventDefault();
+  var el=document.getElementById('dz-'+expId+'-'+zone);
+  if(el){ el.style.transform=''; el.style.background='white'; el.style.borderStyle='dashed'; }
+  var data=ev.dataTransfer.getData('text/plain');
+  if(!data) return;
+  var parts=data.split('|');
+  var dExpId=parts[0], itemId=parts[1];
+  if(dExpId!==expId) return;
+  if(dragState[expId] && dragState[expId][itemId]) return;
+  _actPlaceItem(expId, itemId, zone);
+  _actClearZones(expId);
+  _dragging=null;
+};
+
+/* ── shared place logic ───────────────────────────────────────── */
+function _actPlaceItem(expId, itemId, zone){
+  var cardEl=document.getElementById('di-'+expId+'-'+itemId);
+  if(cardEl){
+    cardEl.style.outline='';
+    cardEl.style.background='white';
+    cardEl.style.opacity='.35';
+    cardEl.style.pointerEvents='none';
+    cardEl.setAttribute('draggable','false');
+  }
+  var e=EX[expId];
+  var item=e.dragItems.find(function(i){return i.id===itemId;});
   if(!item) return;
-
-  const ok = (item.answer === zone);
+  var ok=item.answer===zone;
   if(!dragState[expId]) dragState[expId]={};
-  dragState[expId][itemId] = { zone, ok };
-
-  // Grey out the card in the bank
-  const cardEl = document.getElementById(`di-${expId}-${itemId}`);
-  if(cardEl) cardEl.classList.add('placed');
-
-  // Add result tag to the drop zone
-  const pw = document.getElementById(`pw-${expId}-${zone}`);
+  dragState[expId][itemId]={zone:zone,ok:ok};
+  var pw=document.getElementById('pw-'+expId+'-'+zone);
   if(pw){
-    const t = document.createElement('div');
-    t.className = 'placed-tag';
-    t.style.background   = ok ? '#E8FFF4' : '#FFE8EC';
-    t.style.borderColor  = ok ? 'var(--green)' : 'var(--red)';
-    t.innerHTML = `${item.emoji} ${item.label} ${ok?'✅':'❌'}`;
+    var t=document.createElement('span');
+    t.style.cssText='display:inline-flex;align-items:center;gap:4px;background:'+(ok?'#E8FFF4':'#FFE8EC')+';border:2px solid '+(ok?'#06D6A0':'#EF233C')+';border-radius:10px;padding:4px 10px;font-size:.82rem;font-weight:700;margin:3px;animation:popIn .3s ease;';
+    t.textContent=item.emoji+' '+item.label+' '+(ok?'✅':'❌');
     pw.appendChild(t);
   }
-
-  // Show score when all cards placed
-  if(Object.keys(dragState[expId]).length === e.dragItems.length){
-    const sc = Object.values(dragState[expId]).filter(a=>a.ok).length;
-    const scoreEl = document.getElementById(`drag-score-${expId}`);
-    if(scoreEl) scoreEl.innerHTML = `🎉 You got <strong>${sc} out of ${e.dragItems.length}</strong> correct! ${sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great job!':'😊 Keep practising!'}`;
-    speakText(`You finished! You got ${sc} out of ${e.dragItems.length} correct!`);
+  speakText(item.label+'. '+(ok?'Correct!':'Try again!'));
+  if(Object.keys(dragState[expId]).length===e.dragItems.length){
+    var sc=Object.values(dragState[expId]).filter(function(a){return a.ok;}).length;
+    var scoreEl=document.getElementById('drag-score-'+expId);
+    if(scoreEl) scoreEl.innerHTML='🎉 You got <strong>'+sc+'/'+e.dragItems.length+'</strong>! '+(sc===e.dragItems.length?'🌟 Amazing!':sc>=6?'👏 Great!':'😊 Keep going!');
+    speakText('You got '+sc+' out of '+e.dragItems.length+'!');
   }
 }
 
-function dreset(id){ dragState[id]={}; selectedCard=null; render(id,'activity'); }
+window._actReset = function(id){
+  dragState[id]={}; _sel=null; _dragging=null; render(id,'activity');
+};
+
+function _actClearZones(expId){
+  var e=EX[expId];
+  if(!e) return;
+  var av=[...new Set(e.dragItems.map(function(i){return i.answer;}))];
+  [av[0],av[1]].forEach(function(z){
+    var el=document.getElementById('dz-'+expId+'-'+z);
+    if(el){ el.style.borderColor='#ccc'; el.style.background='white'; el.style.borderStyle='dashed'; el.style.transform=''; }
+  });
+}
 
 /* ════════════════════════════════════
    BUILD QUIZ
